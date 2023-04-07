@@ -1,0 +1,20 @@
+.esferita{
+  
+    display: flex;
+    justify-content: center;
+    width: 40% !important;
+    margin: 0 auto;
+    border-radius: 50%;
+    height: 50%;
+    /* border: 1px solid red; */
+}
+
+.tagcloud--item{
+    color: #D3D3D3;
+    font-family: Verdana,Geneva,sans-serif; 
+}
+
+.tagcloud--item:hover{
+    color: #dfdf73;
+    cursor: pointer;
+}

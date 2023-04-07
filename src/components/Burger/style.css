@@ -1,0 +1,25 @@
+.burger-line {
+  stroke: #fff;
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+  height: 10px;
+  width: 80%;
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.burger-container {
+  position: relative;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.burger-container:hover{
+  cursor: pointer;
+}
+
+.burger-svg {
+  max-width: 100%;
+  z-index: 100;
+}
+
