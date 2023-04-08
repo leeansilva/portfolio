@@ -28,6 +28,8 @@ const Espher = () => {
             "JS",
             "Redux",
             "Gsap",
+            "JSON",
+            "BEM",
             "Three.js"
         ]}
     </TagCloud>

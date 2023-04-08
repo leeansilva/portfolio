@@ -9,12 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@frank-mayer/react-tag-cloud": "^1.2.1",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.11.16",
     "gsap": "^3.11.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
-    "react-spring": "^9.7.1"
+    "react-spring": "^9.7.1",
+    "splitting": "^1.0.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

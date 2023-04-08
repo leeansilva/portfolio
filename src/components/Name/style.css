@@ -1,0 +1,33 @@
+.Name-text-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100px;
+    width: 100%;
+    margin: 0 auto; /* Centrar el contenedor */
+    z-index: 100;
+  }
+  
+  .Name-word {
+
+    display: flex;
+    color: aliceblue;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 100;
+    gap: 20px;
+  }
+  
+  .char {
+    display: inline-block;
+    transform-origin: center;
+    font-size: 51px;
+  
+    z-index: 100;
+  }
+
+
+  
+  
+  

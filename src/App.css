@@ -6,10 +6,12 @@
   text-align: center;
   background-color: #000000;
 }
+*{
+  font-family: 'Montserrat', sans-serif; 
+}
 
 body{
   height: 90.9vh;
-  overflow: hidden;
 }
 
 

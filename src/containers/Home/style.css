@@ -1,0 +1,41 @@
+.home_container{
+
+    height: 500vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.home__Name_container{
+    margin-top: 30px;
+    display: flex;
+    margin-left: 5%;
+    width: 750px;
+
+    height: 130px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.home__redes_container{
+    flex-direction: column;
+    position: absolute;
+    right: 10px;
+    color: azure;
+    height: 150px;
+    align-content: space-between;
+    justify-content: space-between;
+    width: 40px;
+}
+
+.redes_icon:hover{
+    cursor: pointer;
+    color: rgb(33, 34, 35);
+    transition: 0.3s;
+}
+
+.home_h2{
+    color: rgb(172, 175, 178);
+}

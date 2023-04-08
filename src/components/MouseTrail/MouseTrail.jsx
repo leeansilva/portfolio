@@ -3,6 +3,9 @@ import './style.css'
 
 function MouseTrail() {
   useEffect(() => {
+
+    /////////////////////
+    
     const circles = document.querySelectorAll('.circle');
     const coords = {
       x: 0,
@@ -13,10 +16,7 @@ function MouseTrail() {
       circle.x = 0;
       circle.y = 0;
     });
-
-    const bg = document.createElement('div');
-    bg.classList.add('bg');
-    document.body.appendChild(bg); // Agregamos el div bg al body
+    /////////////////////
 
     const animatedCircles = () => {
       let x = coords.x;
@@ -36,19 +36,22 @@ function MouseTrail() {
         y += (nextCircle.y - y) *0.5;
       });
 
-    
     }
-
+    
     window.addEventListener('mousemove', (e) => {
-      coords.x = e.clientX;
-      coords.y = e.clientY;
-      animatedCircles();
+        coords.x = e.clientX;
+        coords.y = e.clientY;
+        animatedCircles();
     });
-  }, [])
+
+    
+    requestAnimationFrame(animatedCircles)
+}, [])
+
+     
 
   return (
     <div>
-      <div className="bg"></div> {/* Agregamos el div bg en el renderizado */}
       <div className="circle"></div>
       <div className="circle"></div>
       <div className="circle"></div>
