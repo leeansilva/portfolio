@@ -3,15 +3,33 @@ import { useSpring, animated } from 'react-spring';
 import Splitting from "splitting";
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
-import { gsap,Bounce,Elastic } from "gsap";
+import { gsap } from "gsap";
 import './style.css'
 
-const Name = ({ text }) => {
+const Name = ({ text, color }) => {
+  const spanRefs = useRef([]);
+
   useEffect(() => {
     Splitting();
+
+    //Animacion inicial
+    const animationLetter = gsap.fromTo(spanRefs.current, {
+      opacity: 0
+    },{
+      opacity: 1,
+      duration: 0.1,
+      stagger:{
+        from: "left",
+        amount: 1
+      },
+      ease: 'none'
+    } );
+
+    return () =>{
+      animationLetter.kill();
+    }
+
   }, []);
-
-
 
   const handleHover = (e) => {
 
@@ -25,18 +43,17 @@ const Name = ({ text }) => {
     .timeline()
     .to(e.target, {
       duration: 0.2,
-      rotate: 10,
-      scale: 1,
+      rotate: 12,
+      scale: 1.5,
     })
     .to(e.target,{
       rotate: 0,
       duration: 0.2,
-      scale: 2,
+      scale: 1,
     })
     .to(e.target, {
-      rotate:10,
+      rotate:6,
       duration: 0.2,
-      scale: 1
     })
     .to(e.target,{
       rotate: 0,
@@ -46,23 +63,7 @@ const Name = ({ text }) => {
    
   };
 
-  const handleHoverOut = (e) => {
-    gsap.to(e.target, {
-      duration: 0.2,
-      x: 0,
-      y: 0,
-      ease: "power2.out",
-    });
-  };
 
-  const letters = document.querySelectorAll(".word > .char");
-
-  const springs = useSpring({
-    to: { transform: "scale(1.5)" },
-    from: { transform: "scale(1)" },
-    config: { mass: 1, tension: 280, friction: 60 },
-    reset: true,
-  });
 
   return (
     <div className="Name-text-container">
@@ -72,9 +73,9 @@ const Name = ({ text }) => {
             <animated.span
               key={index}
               className="char"
-              style={springs}
+              style={{color: color}}
               onMouseEnter={handleHover}
-              
+              ref={(el) => spanRefs.current[index] = el}
             >
               {letter}
             </animated.span>

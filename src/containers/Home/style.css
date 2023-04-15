@@ -1,9 +1,21 @@
-.home_container{
 
-    height: 500vh;
-    width: 100%;
+
+.main_container{
+    position: relative;
+    height: 100vh;
+    width: 400vw;
+    top: 0;
+    background-color: #000;     
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 2;
+}
+
+.home_about_container{
     display: flex;
     flex-direction: column;
+    width: 100vw;
 }
 
 .home__Name_container{
@@ -11,7 +23,6 @@
     display: flex;
     margin-left: 5%;
     width: 750px;
-
     height: 130px;
     justify-content: flex-start;
     align-items: flex-start;
@@ -19,23 +30,28 @@
     flex-wrap: wrap;
 }
 
-.home__redes_container{
-    flex-direction: column;
-    position: absolute;
-    right: 10px;
-    color: azure;
-    height: 150px;
-    align-content: space-between;
-    justify-content: space-between;
-    width: 40px;
-}
-
-.redes_icon:hover{
-    cursor: pointer;
-    color: rgb(33, 34, 35);
-    transition: 0.3s;
-}
 
 .home_h2{
     color: rgb(172, 175, 178);
+}
+
+.sections{
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+/*////////////////////////////////////////////////////////////////////////////////*/
+
+.projects_container{
+    position: absolute;
+    left: 185vw;
+    background-color: red;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////// */
+
+.contact_container{
+    position: absolute;
+    left: 285vw;
+    background-color: orange;
 }

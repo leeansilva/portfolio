@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './style.css'
+import './style.css';
 
 function MouseTrail() {
   useEffect(() => {
@@ -45,13 +45,13 @@ function MouseTrail() {
     });
 
     
-    requestAnimationFrame(animatedCircles)
+    requestAnimationFrame(animatedCircles);
 }, [])
 
      
 
   return (
-    <div>
+    <>
       <div className="circle"></div>
       <div className="circle"></div>
       <div className="circle"></div>
@@ -62,7 +62,7 @@ function MouseTrail() {
       <div className="circle"></div>
       <div className="circle"></div>
       <div className="circle"></div>
-    </div>
+    </>
   );
 }
 

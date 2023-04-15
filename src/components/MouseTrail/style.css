@@ -3,9 +3,10 @@
     width: 24px;
     border-radius: 24px;
     background-color: azure;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     mix-blend-mode: difference; 
-    z-index: 0;
+    z-index: 10;
+    pointer-events: none;
 }
