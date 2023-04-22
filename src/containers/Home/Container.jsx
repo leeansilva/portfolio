@@ -3,9 +3,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NavBar from '../../components/NavBar/NavBar';
 import './style.css';
 import Name from '../../components/Name/Name';
-import MouseTrail from '../../components/MouseTrail/MouseTrail';
 import { gsap } from "gsap";
 import AboutMeScroll from '../AboutMeScroll/AboutMeScroll';
+import ProjectsScroll from '../ProjectsScroll/ProjectsScroll';
+import ContactMeScroll from '../ContactMeScroll/ContactMeScroll';
 
 
 const Container = () => {
@@ -21,11 +22,11 @@ const Container = () => {
     },{
       translateX: "-300vw",
       ease: "none",
-      duration: 5,
+      duration: 10,
       scrollTrigger: {
         trigger: triggerRef.current,
         start: 'top left',
-        end: '2000 top',
+        end: '4000 top',
         scrub: true,
         pin: true
       }
@@ -52,12 +53,12 @@ const Container = () => {
 
         <AboutMeScroll triggerRef2={ triggerRef }/>
         
-        <div className='sections projects_container '  >
-            holi
-        </div>
-        <div className='sections contact_container'  >
-            holi
-        </div>
+      
+        <ProjectsScroll triggerRef3={ triggerRef }/>
+
+
+
+        <ContactMeScroll/>
       </div>
 
    

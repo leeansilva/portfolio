@@ -6,15 +6,17 @@
 html,
 body,
 *{
+    
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 #root {
     width: 98.7vw;
-    overflow-x:visible ;
-    height: 100vh;
+ 
+    height: 100svh;
     box-sizing: border-box;
     background-color: #15cb24;
   }

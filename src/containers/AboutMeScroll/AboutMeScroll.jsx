@@ -8,9 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 //posiblemente para projects, darle un position absolute a las lineas, y moverlas desde -100vw hasta 0px
 
-const AboutMeScroll = () => {
-    
-    const triggerRef2 = useRef(null);
+const AboutMeScroll = ( { triggerRef2 } ) => {
+    const AboutMeContainer = useRef(null);
     const line1 = useRef(null);
     const line2 = useRef(null);
     const line3 = useRef(null);
@@ -23,6 +22,27 @@ const AboutMeScroll = () => {
     const textRef = useRef([]);
     
     useEffect(() => {
+
+          const aboutMeContainerAnimation = gsap.fromTo(AboutMeContainer.current, {
+            translateX: "0px",
+            gap:0,
+          }, {
+            translateX: "140vw",
+            gap:'20px',
+            opacity: "-0.2",
+            display:"none",
+            backgroundColor:'black',
+            color: 'white',
+            ease: "none",
+            duration: 1,
+            scrollTrigger: {
+            trigger : AboutMeContainer.current,
+            start: "left+=150%",
+            end: "3000 top",
+            scrub: true,
+              }
+            
+          })
 
           function createLineAnimation(line, heightFrom,heightTo,xFrom, xTo, trigger ) {
               return gsap.fromTo(
@@ -39,7 +59,7 @@ const AboutMeScroll = () => {
                   scrollTrigger: {
                     trigger: trigger.current,
                     start: "top left",
-                    end: "2000 top",
+                    end: "1000 top",
                     scrub: true
                   }
                 }
@@ -86,17 +106,19 @@ const AboutMeScroll = () => {
           } );
 
           const nameAnimation = createAnimationContent(nameRef, 1, "100px","0px", triggerRef2);
-          const espherAnimation = createAnimationContent(espherRef,1,"20px","0px", triggerRef2)
+          const espherAnimation = createAnimationContent(espherRef,1,"20px","0px", triggerRef2);
 
-          const line1Animation = createLineAnimation(line1, "20%","100%",0,0, triggerRef2);
+       
+          const line1Animation = createLineAnimation(line1, "20%","30%",0,0, triggerRef2);
           const line2Animation = createLineAnimation(line2,"20%","20%",0, "-20px",triggerRef2);
           const line3Animation = createLineAnimation(line3,"20%","20%",0, "-20px",triggerRef2);
           const line4Animation = createLineAnimation(line4,"20%","20%",0, "-20px",triggerRef2);
-          const line5Animation = createLineAnimation(line5,"20%","20%",0, "330px",triggerRef2);
-          const line6Animation = createLineAnimation(line6,"20%","20%",0, "680px",triggerRef2);
-          const line7Animation = createLineAnimation(line7,"20%","20%",0, "1010px",triggerRef2);
+          const line5Animation = createLineAnimation(line5,"20%","20%",0, "80px",triggerRef2);
+          const line6Animation = createLineAnimation(line6,"20%","20%",0, "180px",triggerRef2);
+          const line7Animation = createLineAnimation(line7,"20%","20%",0, "300px",triggerRef2);
     
         return () =>{
+          aboutMeContainerAnimation.kill();
           line1Animation.kill();
           line2Animation.kill();
           line3Animation.kill();
@@ -112,7 +134,7 @@ const AboutMeScroll = () => {
       }, []);
 
   return (
-    <div className='sections aboutMe_container' ref={triggerRef2}  >    
+    <div className='sections aboutMe_container' ref={ AboutMeContainer }  >    
               <div ref={ line1 } className='flexBlocks_line line1'>
                 <div ref={ nameRef }>
                   <Name color={"black"} text={ "Sobre mi" }/>

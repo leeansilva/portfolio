@@ -12,7 +12,7 @@
     height: 20%;
     position: relative;
     background-color: #fff;
-    border: 1px solid #fff;
+
 }
 
 .line1{
@@ -64,6 +64,15 @@
 
 .line6{
     left: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    padding-left: 30px;
+    align-items: center;
+}
+
+.line7{
+    left: 0px;
     display: flex;
     flex-direction: row;
     justify-content: left;
