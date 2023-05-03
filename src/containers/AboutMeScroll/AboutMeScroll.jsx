@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Espher from '../../components/Espher/Espher';
 import './style.css';
 import Name from '../../components/Name/Name';
+import Button from '../../components/Button/Button';
 gsap.registerPlugin(ScrollTrigger);
 
 //posiblemente para projects, darle un position absolute a las lineas, y moverlas desde -100vw hasta 0px
@@ -153,7 +154,11 @@ const AboutMeScroll = ( { triggerRef2 } ) => {
               <div ref={ line6 } className='flexBlocks_line line6'>
                 <p ref={ (el) => textRef.current[3] = el } className='aboutMe_text text1'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit aut odit ut natus incidunt aspernatur</p>
               </div>
-              <div ref={ line7 } className='flexBlocks_line line7'></div>
+              <div ref={ line7 } className='flexBlocks_line line7'>
+                <div style={{width: '150px', position: 'absolute', left: '50vh'}} >
+                  <Button color={'dark'} title={'Más'} />
+                </div>
+              </div>
               
               <div ref={ espherRef } className='espher_container'>
                 <Espher/>

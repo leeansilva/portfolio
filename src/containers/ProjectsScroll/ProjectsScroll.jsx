@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import './style.css'
+import Button from '../../components/Button/Button';
 
 const ProjectsScroll = () => {
     const ProjetcScrollContainer = useRef(null);
@@ -106,6 +107,24 @@ const ProjectsScroll = () => {
         }
       });
 
+      const lineProjectsAnimationFinal = gsap.fromTo (lineProjects.current,
+        {
+          height: "100%",
+          borderTop: "0px solid #fff"
+        },
+        {
+          height: "20%",
+          borderTop: "15px solid #fff",
+          ease: "none",
+          duration: 1,
+          scrollTrigger: {
+            trigger: ProjetcScrollContainer.current,
+            start: "left+=400%",
+            end: "3700 top",
+            scrub: true
+          }
+        });
+
 
 
       return () =>{
@@ -114,6 +133,7 @@ const ProjectsScroll = () => {
         linesAnimationFinal.kill();
         ProjecsContainerAnimation.kill();
         lineProjectsAnimation.kill();
+        lineProjectsAnimationFinal.kill();
       }
      
     }, [])
@@ -146,7 +166,11 @@ const ProjectsScroll = () => {
 
               <div ref={ (el) => lines.current[4] = el } className='PflexBlocks_line Pline6'></div>
 
-              <div ref={ (el) => lines.current[5] = el } className='PflexBlocks_line Pline7'></div>
+              <div ref={ (el) => lines.current[5] = el } className='PflexBlocks_line Pline7'>
+               <div style={{width: '150px', height: '35px', backgroundColor: 'red'}}>
+                  <Button color={'light'} title={'Más'}/>
+               </div>
+              </div>
               
     </div>
   )

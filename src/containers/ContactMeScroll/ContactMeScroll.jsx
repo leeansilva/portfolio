@@ -13,6 +13,9 @@ const ContactMeScroll = () => {
   const nameRef = useRef(null);
 
   useEffect(() => {
+
+    
+
     const RectanguloAnimation = gsap.fromTo(
       rectangulo.current,
       {
@@ -97,7 +100,7 @@ const ContactMeScroll = () => {
   };
 
   return (
-    <div ref={ contactMeContainer } className='sections contact_container'>
+    <div ref={ contactMeContainer } id='Contáctame' className='sections contact_container'>
 
       <div ref={ rectangulo } className='rectangulo'></div>
 

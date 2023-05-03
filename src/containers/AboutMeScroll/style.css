@@ -75,7 +75,6 @@
     left: 0px;
     display: flex;
     flex-direction: row;
-    justify-content: left;
     padding-left: 30px;
     align-items: center;
 }

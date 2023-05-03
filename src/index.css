@@ -11,6 +11,8 @@ body,
     margin: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    
 }
 
 #root {
@@ -24,3 +26,7 @@ body,
   .pin-spacer{
     overflow-x: hidden;
   }
+
+::-webkit-scrollbar {
+    display: none;
+}

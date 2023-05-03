@@ -1,0 +1,60 @@
+.contact_container{
+    position: absolute;
+    left: 300vw;
+    display: flex;
+    background-color: none;
+    flex-direction: column;
+}
+
+.rectangulo {
+    background-color: #000;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 20000;
+}
+
+.CflexBlocks_line{
+    width: 100%;
+    height: 20%;
+    position: relative;
+    background-color: #ffffff;
+    z-index: 19000;
+
+}
+
+.flexCuerdas{
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    background-color: none;
+    top: 0;
+    right: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20000;
+    padding-right: 1.5%;
+}
+
+.chord{
+    height: 100%;
+    cursor:no-drop;
+    background-color: #000;
+    width: 5px;
+}
+
+.title_container{
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 50%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2%;
+    border-bottom: 4px solid black;
+    padding-left: 5%;
+}
