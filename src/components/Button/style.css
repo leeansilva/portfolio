@@ -1,7 +1,7 @@
 .Button{
     width: 100%;
     position: relative;
-    height: 35px;
+    height: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,6 +16,7 @@
     position: absolute;
     justify-self: center;
     align-self: center;
+    font-size: 18px;
 }
 
 .color1{
@@ -24,7 +25,7 @@
     position: absolute;
     justify-self: center;
     align-self: center;
-    align-items: center;
+    align-items:self-start;
     display: flex;
     flex-direction: row;
 }

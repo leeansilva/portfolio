@@ -6,7 +6,7 @@ import "splitting/dist/splitting-cells.css";
 import { gsap } from "gsap";
 import './style.css'
 
-const Name = ({ text, color }) => {
+const Name = ({ text, color,fontSize }) => {
   const spanRefs = useRef([]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Name = ({ text, color }) => {
     gsap.killTweensOf(e.target);
     gsap.set(e.target, {
       left:100,
-      top:100
+      top:100,
     })
 
     const tl1 = gsap
@@ -73,7 +73,7 @@ const Name = ({ text, color }) => {
             <animated.span
               key={index}
               className="char"
-              style={{color: color}}
+              style={{color: color, fontSize: fontSize }}
               onMouseEnter={handleHover}
               ref={(el) => spanRefs.current[index] = el}
             >

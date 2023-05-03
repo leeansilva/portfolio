@@ -79,7 +79,7 @@ const ProjectsScroll = () => {
         height: "160%",
       },
       {
-        height: "40%",
+        height: "50%",
         ease: "none",
         duration: 1,
         scrollTrigger: {
@@ -96,7 +96,7 @@ const ProjectsScroll = () => {
       },
       {
         translateX: "0%",
-        height: "100%",
+        height: "250%",
         ease: "none",
         duration: 1,
         scrollTrigger: {
@@ -143,7 +143,7 @@ const ProjectsScroll = () => {
     <div ref={ ProjetcScrollContainer } className='sections projects_container '>
               <div ref = { line1 } className='PflexBlocks_line Pline1'>
                 <div ref={ nameRef }>
-                  <Name color={"white"} text={ "Projects" }/>
+                  <Name fontSize={"80px"} color={"white"} text={ "Projects" }/>
                 </div>          
               </div>
 
@@ -151,11 +151,23 @@ const ProjectsScroll = () => {
 
               <div ref = { lineProjects } className='PflexBlocks_line Pline3'>
                 <div className='row__projects'>
-                  <div className='project1'>
-                    Proyecto1
+                  <div className='project1 '>
+                    <img className='imgProjects twitter' src='https://i.imgur.com/pJHuwg0.png'></img>
+                    <h4>Tecnologias</h4>
+                    <h4>Twitter-Clone:</h4>
+                    <h4>Uno de mis primeros proyectos en la web hecho solo con HTML, CSS y JavaScript vanilla. En aquel entonces, estaba aprendiendo a usar estas tecnologías, así que copié el diseño lo mejor que pude y simule algunas de las funcionalidades de Twitter.</h4>
                   </div>
-                  <div className='project2'>
-                    Proyecto2
+                  <div className='project1 '>
+                    <img className='imgProjects justPlay' src='https://i.imgur.com/KTZVvIP.png'></img>
+                    <h4>Tecnologias</h4>
+                    <h4>Just-Play:</h4>
+                    <h4>Una web-app de juegos, posee un sistema de puntos y puedes ver tu posicion en el ranking dependiendo que juego sea. Aunque todavía hay mucho por mejorar, me enorgullece que en este proyecto haya podido destacar algunas de mis habilidades en el desarrollo front-end.</h4>
+                  </div>
+                  <div className='project1 '>
+                    <img className='imgProjects toDo' src='https://i.imgur.com/287Kh73.png'></img>
+                    <h4>Tecnologias</h4>
+                    <h4>ToDo:</h4>
+                    <h4>En este mini proyecto entendí los fundamentos mas importantes de React. Es un creador de tareas, en el que puedes marcar las que ya están realizadas, si tienes muchas cosas para hacer puedes filtrarlas en la barra de búsqueda, y eliminar las que ya no quieres que estén.</h4>
                   </div>
                 </div>
               </div>
@@ -164,12 +176,14 @@ const ProjectsScroll = () => {
 
               <div ref={ (el) => lines.current[3] = el } className='PflexBlocks_line Pline5'></div>
 
-              <div ref={ (el) => lines.current[4] = el } className='PflexBlocks_line Pline6'></div>
-
-              <div ref={ (el) => lines.current[5] = el } className='PflexBlocks_line Pline7'>
-               <div style={{width: '150px', height: '35px', backgroundColor: 'red'}}>
+              <div ref={ (el) => lines.current[4] = el } className='PflexBlocks_line Pline6'>
+              <div style={{width: '150px', height: '35px', backgroundColor: 'red'}}>
                   <Button color={'light'} title={'Más'}/>
                </div>
+              </div>
+
+              <div ref={ (el) => lines.current[5] = el } className='PflexBlocks_line Pline7'>
+               
               </div>
               
     </div>

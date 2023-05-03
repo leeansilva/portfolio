@@ -138,7 +138,7 @@ const AboutMeScroll = ( { triggerRef2 } ) => {
     <div className='sections aboutMe_container' ref={ AboutMeContainer }  >    
               <div ref={ line1 } className='flexBlocks_line line1'>
                 <div ref={ nameRef }>
-                  <Name color={"black"} text={ "Sobre mi" }/>
+                  <Name fontSize={"80px"} color={"black"} text={ "Sobre mi" }/>
                 </div>          
               </div>
               <div ref={ line2 } className='flexBlocks_line line2'></div>

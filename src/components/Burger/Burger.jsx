@@ -12,7 +12,7 @@ const Burger = ({isOpen}) => {
   return (
     <div
       className="burger-container"
-      style={{ position: 'relative', width: 24, height: 28,left:'5px' }}
+      style={{ position: 'relative', width: 24, height: 28,left:'10px',top:'8px' }}
     >
       <animated.svg
         viewBox="0 0 100 100"

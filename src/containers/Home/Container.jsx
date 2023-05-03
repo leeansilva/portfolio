@@ -63,14 +63,17 @@ const Container = () => {
 
           <div className='home_about_container' >
               <div className='home__Name_container'>
-                  <Name color={"white"} text="Leandro Silva,"/>
-                  <Name color={"white"} text="web developer." />
+                <h1 className='Name_container_text'>Hola, soy</h1>
+                  <Name fontSize={"90px"} color={"white"} text="Leandro Silva,"/>
+                  <Name fontSize={"60px"} color={"white"} text="desarrollador web." />
+                <h1 className='Name_container_text2'>Apasionado por crear experiencias digitales excepcionales.</h1>
+              </div>
+              <div className='button__container'>
+                <Button title={'Contáctame'} color={'light'} /> 
               </div>       
           </div> 
 
-        <div style={{ bottom: 200, left: "14%", position: 'absolute',width: '3.5%'}}>
-        <Button title={'Contáctame'} color={'light'} /> 
-        </div>
+        
 
         <AboutMeScroll triggerRef2={ triggerRef }/>
         

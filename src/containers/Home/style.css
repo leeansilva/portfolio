@@ -17,7 +17,7 @@
     top: 0;
     left: 0;
     width: 300px;
-    height: 100%;
+    height: 20%;
     z-index: 999;
 }
 
@@ -30,15 +30,40 @@
 .home__Name_container{
     margin-top: 30px;
     display: flex;
-    margin-left: 5%;
-    width: 750px;
-    height: 130px;
+    margin-left: 15%;
+    max-width: 700px;
+    height: auto;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top: 10%;
+    justify-self: center;
 }
 
+.Name_container_text{
+    font-size: 24px;
+    color: #dcdcdc;
+    letter-spacing: 3px;
+    font-weight: 300;
+    margin-bottom: -10px;
+}
+
+.button__container{
+    background-color: red;
+    width: 200px;
+    justify-self: center;
+    align-self: center;
+    margin-left: -5%;
+    margin-top: 55px;
+}
+.Name_container_text2{
+    font-size: 19px;
+    color: #dcdcdc;
+    letter-spacing: 3px;
+    font-weight: 300;
+    margin-bottom: -10px;
+}
 
 .home_h2{
     color: rgb(172, 175, 178);

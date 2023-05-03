@@ -2,18 +2,24 @@ import './style.css';
 import { gsap } from "gsap";
 import React, { StrictMode, useEffect, useRef, useState } from 'react';
 
-
 //cuadno importemos este comp, importarlo dentro de un div para manejar su posi
 
 const Button = ({color, title}) => {
     const [hoverTime, setHoverTime] = useState(0);
+    const [animationEnter, setAnimationEnter] = useState(false);
+    const [animationLeave, setAnimationLeave] = useState(false);
+    let timeOutId;
     const [colorButton, setColorButton] = useState('');
 
     const text = useRef(null);
     const columns = useRef([]);
 
   const handleMouseEnter = () => {
-   
+    
+    
+    setAnimationEnter(true);
+    
+
     const textAnimation = gsap
     .timeline()
     .to(text.current, {
@@ -29,7 +35,7 @@ const Button = ({color, title}) => {
         height: "100%",
         border: `'2px outset'${color === 'light' ? "#000" : "#fff"}`,
         duration: 0.1,
-        onComplete:()=>{ setHoverTime(1) },
+        onComplete:()=>{ setAnimationEnter(false); },
         stagger:{
           from: "left",
           amount: 0.4
@@ -40,12 +46,14 @@ const Button = ({color, title}) => {
     textAnimation.play();
    
     return () =>{
-        animationLetter.kill();
+        textAnimation.kill();
         gsap.killTweensOf(columns.current);
       }
   };
 
   const handleMouseLeave = () => {
+
+      setAnimationLeave(true);
 
       const textAnimation2 = gsap
       .timeline()
@@ -62,7 +70,7 @@ const Button = ({color, title}) => {
         height: "0%",
         border: `'0px solid'${color === 'light' ? "#000" : "#fff"}`,
         duration: 0.1,
-        onComplete:()=>{ setHoverTime(0) },
+        onComplete:()=>{ setAnimationLeave(false) },
         stagger:{
           from: "left",
           amount: 0.4
@@ -74,12 +82,31 @@ const Button = ({color, title}) => {
       
       return () =>{
         gsap.killTweensOf(columns.current);
-        animationLetter.kill();
+        textAnimation2.kill();
       }
   };
 
 return (
-    <div style={{ border: color === 'light' ? '1px outset #fff' : '1px outset #000'}} className='Button' onMouseEnter={ hoverTime == 0 && handleMouseEnter} onMouseLeave={hoverTime == 1 ? handleMouseLeave : () => setTimeout(handleMouseLeave, 500)} >
+    <div style={{ border: color === 'light' ? '1px outset #fff' : '1px outset #000'}} className='Button' 
+    onMouseEnter={ ()=>{
+      if(animationEnter === false && animationLeave === false){
+        handleMouseEnter();
+      } else {
+        return
+      }
+    }} 
+    // onMouseLeave={hoverTime == 1 ? handleMouseLeave : () => setTimeout(handleMouseLeave, 500)}
+    onMouseLeave={() => {
+      if (!animationEnter && !animationLeave) {
+        handleMouseLeave();
+      } else if (animationEnter && !animationLeave) {
+        timeOutId = setTimeout(handleMouseLeave, 500);
+      } else if (animationEnter && animationLeave && timeOutId) {
+        clearTimeout(timeOutId);
+        return
+      } else return
+    }}
+    >
         <div style={{backgroundColor: color === 'light' ? "#fff" : "#000"}} className='color1' >
             <div ref={(el) => columns.current[0] = el} style={{ backgroundColor: color === 'light' ? '#000' : "#fff" }} className="columns"></div>
             <div ref={(el) => columns.current[1] = el} style={{ backgroundColor: color === 'light' ? '#000' : "#fff" }} className="columns"></div>
