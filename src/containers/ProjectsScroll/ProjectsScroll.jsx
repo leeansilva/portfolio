@@ -20,14 +20,14 @@ const ProjectsScroll = () => {
         translateX: "0px",
         gap:0,
       }, {
-        translateX: "100vw",
+        translateX: "50vw",
         display:"none",
         ease: "none",
         duration: 1,
         scrollTrigger: {
         trigger : ProjetcScrollContainer.current,
-        start: "left+=350%",
-        end: "4000 top",
+        start: "left+=300%",
+        end: "left+=550%",
         scrub: true,
           }
         
@@ -35,7 +35,7 @@ const ProjectsScroll = () => {
 
       const linesAnimation = gsap.fromTo(lines.current, {
         height: "50%",
-        translateX: "100vw",
+        translateX: "120vw",
         marginBottom: "100px",
       },{
         translateX: "0px",
@@ -44,8 +44,8 @@ const ProjectsScroll = () => {
         duration: 2,
         scrollTrigger: {
           trigger: ProjetcScrollContainer.current,
-          start: "right top",
-          end: "350% top",
+          start: "left+=280%",
+          end: "left+=400%",
           scrub: true,
         },
         stagger:{
@@ -125,6 +125,7 @@ const ProjectsScroll = () => {
           }
         });
 
+
       return () =>{
         linesAnimation.kill();
         line1Animation.kill();
@@ -145,10 +146,10 @@ const ProjectsScroll = () => {
                 </div>          
               </div>
 
-              <div  ref={ (el) => lines.current[1] = el }  className='PflexBlocks_line Pline2'></div>
+              <div  ref={ (el) => lines.current[0] = el }  className='PflexBlocks_line Pline2'></div>
 
               <div ref = { lineProjects } className='PflexBlocks_line Pline3'>
-                <div className='row__projects'>
+                {/* <div className='row__projects'>
                   <div className='project1 '>
                     <img className='imgProjects twitter' src='https://i.imgur.com/pJHuwg0.png'></img>
                     <h4>Tecnologias</h4>
@@ -161,26 +162,20 @@ const ProjectsScroll = () => {
                     <h4>Just-Play:</h4>
                     <h4>Una web-app de juegos, posee un sistema de puntos y puedes ver tu posicion en el ranking dependiendo que juego sea. Aunque todavía hay mucho por mejorar, me enorgullece que en este proyecto haya podido destacar algunas de mis habilidades en el desarrollo front-end.</h4>
                   </div>
-                  <div className='project1 '>
-                    <img className='imgProjects toDo' src='https://i.imgur.com/287Kh73.png'></img>
-                    <h4>Tecnologias</h4>
-                    <h4>ToDo:</h4>
-                    <h4>En este mini proyecto entendí los fundamentos mas importantes de React. Es un creador de tareas, en el que puedes marcar las que ya están realizadas, si tienes muchas cosas para hacer puedes filtrarlas en la barra de búsqueda, y eliminar las que ya no quieres que estén.</h4>
-                  </div>
-                </div>
+                </div> */}
               </div>
 
-              <div ref={ (el) => lines.current[2] = el } className='PflexBlocks_line Pline4'></div>
+              <div ref={ (el) => lines.current[1] = el } className='PflexBlocks_line Pline4'></div>
 
-              <div ref={ (el) => lines.current[3] = el } className='PflexBlocks_line Pline5'></div>
+              <div ref={ (el) => lines.current[2] = el } className='PflexBlocks_line Pline5'></div>
 
-              <div ref={ (el) => lines.current[4] = el } className='PflexBlocks_line Pline6'>
+              <div ref={ (el) => lines.current[3] = el } className='PflexBlocks_line Pline6'>
               <div style={{width: '150px', height: '35px', backgroundColor: 'red'}}>
                   <Button color={'light'} title={'Más'}/>
                </div>
               </div>
 
-              <div ref={ (el) => lines.current[5] = el } className='PflexBlocks_line Pline7'>
+              <div ref={ (el) => lines.current[4] = el } className='PflexBlocks_line Pline7'>
                
               </div>
               

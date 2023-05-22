@@ -28,7 +28,7 @@ const AboutMeScroll = ( { triggerRef2 } ) => {
             translateX: "0px",
             gap:0,
           }, {
-            translateX: "140vw",
+            translateX: "100vw",
             gap:'20px',
             opacity: "-0.2",
             display:"none",
@@ -38,8 +38,8 @@ const AboutMeScroll = ( { triggerRef2 } ) => {
             duration: 1,
             scrollTrigger: {
             trigger : AboutMeContainer.current,
-            start: "left+=150%",
-            end: "3000 top",
+            start: "left+=158%",
+            end: "left+=350%",
             scrub: true,
               }
             

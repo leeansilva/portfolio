@@ -14,6 +14,7 @@
     height: 20%;
     position: relative;
     background-color: #000;
+    border: 1px solid #fff;
 }
 
 .Pline1{
@@ -22,6 +23,10 @@
     justify-content: left;
     padding-left: 30px;
     align-items: center;
+}
+
+.Pline2{
+    background-color: red;
 }
 
 .row__projects{
