@@ -125,8 +125,6 @@ const ProjectsScroll = () => {
           }
         });
 
-
-
       return () =>{
         linesAnimation.kill();
         line1Animation.kill();
