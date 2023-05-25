@@ -16,7 +16,7 @@ const ProjectsScroll = () => {
     const line1 = useRef(null);
     const lineProjects = useRef(null);
     const rowProjects = useRef(null);
-    const project1 = useRef(null);
+    const projects = useRef([]);
 
     useEffect(() => {
 
@@ -109,8 +109,6 @@ const ProjectsScroll = () => {
           scrub: true
         }
       });
-
-    
       
       const lineProjectsAnimationFinal = gsap.fromTo (lineProjects.current,
         {
@@ -130,15 +128,20 @@ const ProjectsScroll = () => {
           }
         });
 
-        const project1Animation = gsap.fromTo(project1.current, {
-          scaleY: 0
-        }, {
-          scaleY: 1,
-          onComplete: () => { console.log(project1) },
+        const projectsAnimation = gsap.fromTo(projects.current, {
+          height: 0
+        },{
+         height:"100%",
           scrollTrigger: {
-            trigger: project1.current,
-            start:' left-=200%'
-          }
+            trigger: ProjetcScrollContainer.current,
+          start: "left+=350%",
+          end: "left+=450%",
+          },
+          stagger:{
+            from: "left",
+            amount: 2
+          },
+          ease: 'none'
         });
     
 
@@ -149,7 +152,7 @@ const ProjectsScroll = () => {
         ProjecsContainerAnimation.kill();
         lineProjectsAnimation.kill();
         lineProjectsAnimationFinal.kill();
-        project1Animation.kill();
+        projectsAnimation.kill();
       }
      
     }, [])
@@ -167,12 +170,14 @@ const ProjectsScroll = () => {
 
               <div ref = { lineProjects } className='PflexBlocks_line Pline3'>
                 <div ref= { rowProjects } className='row__projects' >
-                  <div ref={ project1 } className='project1'>
+
+                  <div ref={ (el) => projects.current[0] = el } className='project1'>
                     <img className='imgProjects twitter' src='https://i.imgur.com/pJHuwg0.png'></img>
                   </div>
-                  <div className='project1 '>
+                  <div ref={ (el) => projects.current[1] = el } className='project1 '>
                     <img className='imgProjects justPlay' src='https://i.imgur.com/KTZVvIP.png'></img>
                   </div>
+
                 </div>
               </div>
 
