@@ -8,11 +8,15 @@ import './style.css'
 import Button from '../../components/Button/Button';
 
 const ProjectsScroll = () => {
+
+  
     const ProjetcScrollContainer = useRef(null);
     const nameRef = useRef(null);
     const lines = useRef([]);
     const line1 = useRef(null);
     const lineProjects = useRef(null);
+    const rowProjects = useRef(null);
+    const project1 = useRef(null);
 
     useEffect(() => {
 
@@ -20,17 +24,16 @@ const ProjectsScroll = () => {
         translateX: "0px",
         gap:0,
       }, {
-        translateX: "50vw",
+        translateX: "100vw",
         display:"none",
         ease: "none",
         duration: 1,
         scrollTrigger: {
         trigger : ProjetcScrollContainer.current,
-        start: "left+=300%",
-        end: "left+=550%",
+        start: "left+=373%",
+        end: "left+=560%",
         scrub: true,
           }
-        
       })
 
       const linesAnimation = gsap.fromTo(lines.current, {
@@ -44,8 +47,8 @@ const ProjectsScroll = () => {
         duration: 2,
         scrollTrigger: {
           trigger: ProjetcScrollContainer.current,
-          start: "left+=280%",
-          end: "left+=400%",
+          start: "left+=240%",
+          end: "left+=320%",
           scrub: true,
         },
         stagger:{
@@ -107,6 +110,8 @@ const ProjectsScroll = () => {
         }
       });
 
+    
+      
       const lineProjectsAnimationFinal = gsap.fromTo (lineProjects.current,
         {
           height: "100%",
@@ -125,6 +130,17 @@ const ProjectsScroll = () => {
           }
         });
 
+        const project1Animation = gsap.fromTo(project1.current, {
+          scaleY: 0
+        }, {
+          scaleY: 1,
+          onComplete: () => { console.log(project1) },
+          scrollTrigger: {
+            trigger: project1.current,
+            start:' left-=200%'
+          }
+        });
+    
 
       return () =>{
         linesAnimation.kill();
@@ -133,6 +149,7 @@ const ProjectsScroll = () => {
         ProjecsContainerAnimation.kill();
         lineProjectsAnimation.kill();
         lineProjectsAnimationFinal.kill();
+        project1Animation.kill();
       }
      
     }, [])
@@ -149,20 +166,14 @@ const ProjectsScroll = () => {
               <div  ref={ (el) => lines.current[0] = el }  className='PflexBlocks_line Pline2'></div>
 
               <div ref = { lineProjects } className='PflexBlocks_line Pline3'>
-                {/* <div className='row__projects'>
-                  <div className='project1 '>
+                <div ref= { rowProjects } className='row__projects' >
+                  <div ref={ project1 } className='project1'>
                     <img className='imgProjects twitter' src='https://i.imgur.com/pJHuwg0.png'></img>
-                    <h4>Tecnologias</h4>
-                    <h4>Twitter-Clone:</h4>
-                    <h4>Uno de mis primeros proyectos en la web hecho solo con HTML, CSS y JavaScript vanilla. En aquel entonces, estaba aprendiendo a usar estas tecnologías, así que copié el diseño lo mejor que pude y simule algunas de las funcionalidades de Twitter.</h4>
                   </div>
                   <div className='project1 '>
                     <img className='imgProjects justPlay' src='https://i.imgur.com/KTZVvIP.png'></img>
-                    <h4>Tecnologias</h4>
-                    <h4>Just-Play:</h4>
-                    <h4>Una web-app de juegos, posee un sistema de puntos y puedes ver tu posicion en el ranking dependiendo que juego sea. Aunque todavía hay mucho por mejorar, me enorgullece que en este proyecto haya podido destacar algunas de mis habilidades en el desarrollo front-end.</h4>
                   </div>
-                </div> */}
+                </div>
               </div>
 
               <div ref={ (el) => lines.current[1] = el } className='PflexBlocks_line Pline4'></div>

@@ -14,7 +14,6 @@
     height: 20%;
     position: relative;
     background-color: #000;
-    border: 1px solid #fff;
 }
 
 .Pline1{
@@ -25,9 +24,6 @@
     align-items: center;
 }
 
-.Pline2{
-    background-color: red;
-}
 
 .row__projects{
     display: flex;
@@ -35,23 +31,24 @@
     flex-wrap: wrap;
     background-color: none;
     justify-content: space-around;
-    align-items: flex-start;
     height: 100%;
     width: 100%;
 }
 
 .project1{
-    width: 25%;
-    height: 100%;
+    width: 45%;
+    height: 80%;
     display: flex;
     background-color:none;
     flex-direction: column;
-    justify-content: space-between;
+    align-self: center;
+    background-color: #000;
    
 }
 
 .Pline3{
     margin-top: 10px;
+
 }
 .twitter{
     box-shadow: 26px 26px 0px -8px rgb(41, 184, 235);
@@ -88,7 +85,7 @@ h4{
 
 .imgProjects{
     width: 100%;
-    height: 50%;
+    height: 100%;
     border-radius: 4px;
     background-color: none;
 }
