@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react';
 import Name from '../../components/Name/Name';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,7 +8,6 @@ import './style.css'
 import Button from '../../components/Button/Button';
 
 const ProjectsScroll = () => {
-
   
     const ProjetcScrollContainer = useRef(null);
     const nameRef = useRef(null);
@@ -17,6 +16,31 @@ const ProjectsScroll = () => {
     const lineProjects = useRef(null);
     const rowProjects = useRef(null);
     const projects = useRef([]);
+    const columns = useRef([]);
+
+    const handleHover = () => {
+
+      gsap.killTweensOf(columns.current);
+
+      const tl1 = gsap
+      .timeline()
+      .staggerTo(columns.current, 0.2, {
+        height: "100%"
+      }, 0.2) // 0.2 es el tiempo de separación entre cada animación
+    };
+
+    const handleHoverOut = () => {
+
+      gsap.killTweensOf(columns.current);
+
+      const tl1 = gsap
+      .timeline()
+      .staggerTo(columns.current, 0.2, {
+        height: "0%"
+      }, 0.2) // 0.2 es el tiempo de separación entre cada animación
+    };
+
+
 
     useEffect(() => {
 
@@ -129,13 +153,15 @@ const ProjectsScroll = () => {
         });
 
         const projectsAnimation = gsap.fromTo(projects.current, {
-          height: 0
+          scale: 0
         },{
-         height:"100%",
+         scale:1,
+         ease:"none",
           scrollTrigger: {
-            trigger: ProjetcScrollContainer.current,
-          start: "left+=350%",
-          end: "left+=450%",
+          trigger: ProjetcScrollContainer.current,
+          start: "left+=250%",
+          end: "left+=350%",
+          scrub: true
           },
           stagger:{
             from: "left",
@@ -143,8 +169,7 @@ const ProjectsScroll = () => {
           },
           ease: 'none'
         });
-    
-
+  
       return () =>{
         linesAnimation.kill();
         line1Animation.kill();
@@ -166,12 +191,21 @@ const ProjectsScroll = () => {
                 </div>          
               </div>
 
-              <div  ref={ (el) => lines.current[0] = el }  className='PflexBlocks_line Pline2'></div>
+              <div ref={ (el) => lines.current[0] = el }  className='PflexBlocks_line Pline2'></div>
 
-              <div ref = { lineProjects } className='PflexBlocks_line Pline3'>
+              <div ref= { lineProjects } className='PflexBlocks_line Pline3'>
                 <div ref= { rowProjects } className='row__projects' >
 
                   <div ref={ (el) => projects.current[0] = el } className='project1'>
+                      <div className="columnsContainer" onMouseLeave={handleHoverOut} onMouseEnter={ handleHover }>
+                        <div ref={ (el) => columns.current[0] = el } className="dinamicColumns"></div>
+                        <div ref={ (el) => columns.current[1] = el } className="dinamicColumns"></div>
+                        <div ref={ (el) => columns.current[2] = el } className="dinamicColumns"></div>
+                        <div ref={ (el) => columns.current[3] = el } className="dinamicColumns"></div>
+                        <div ref={ (el) => columns.current[4] = el } className="dinamicColumns"></div>
+                        <div ref={ (el) => columns.current[5] = el } className="dinamicColumns"></div>
+                      </div>
+
                     <img className='imgProjects twitter' src='https://i.imgur.com/pJHuwg0.png'></img>
                   </div>
                   <div ref={ (el) => projects.current[1] = el } className='project1 '>
