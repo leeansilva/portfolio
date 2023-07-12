@@ -29,7 +29,7 @@ const ContactMeScroll = () => {
         ease: "none",
         scrollTrigger: {
           trigger: contactMeContainer.current,
-          start: "left+=135%",
+          start: "left+=80%",
           end: "4000 top",
           scrub: true,
         },
@@ -48,8 +48,8 @@ const ContactMeScroll = () => {
       duration: 2,
       scrollTrigger: {
         trigger: contactMeContainer.current,
-        start: "left+=400%",
-        end: "left+=500%",  
+        start: "left+=320%",
+        end: "left+=400%",  
         scrub: true,
       },
       stagger:{

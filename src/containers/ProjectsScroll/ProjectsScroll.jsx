@@ -24,14 +24,14 @@ const ProjectsScroll = () => {
         translateX: "0px",
         gap:0,
       }, {
-        translateX: "100vw",
+        translateX: "150vw",
         display:"none",
         ease: "none",
         duration: 1,
         scrollTrigger: {
         trigger : ProjetcScrollContainer.current,
-        start: "left+=373%",
-        end: "left+=560%",
+        start: "left+=275%",
+        end: "left+=480%",
         scrub: true,
           }
       })
@@ -104,8 +104,8 @@ const ProjectsScroll = () => {
         duration: 1,
         scrollTrigger: {
           trigger: ProjetcScrollContainer.current,
-          start: "top left",
-          end: "2000 top",
+          start: "left+=150%",
+          end: "left+=200%",
           scrub: true
         }
       });
@@ -123,7 +123,7 @@ const ProjectsScroll = () => {
           scrollTrigger: {
             trigger: ProjetcScrollContainer.current,
             start: "left+=400%",
-            end: "3700 top",
+          end: "left+=480%",
             scrub: true
           }
         });

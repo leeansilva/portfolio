@@ -28,9 +28,9 @@ const AboutMeScroll = ( { triggerRef2 } ) => {
             translateX: "0px",
             gap:0,
           }, {
-            translateX: "100vw",
+            translateX: "130vw",
             gap:'20px',
-            opacity: "-0.2",
+            opacity: "0.2",
             display:"none",
             backgroundColor:'black',
             color: 'white',
@@ -38,8 +38,8 @@ const AboutMeScroll = ( { triggerRef2 } ) => {
             duration: 1,
             scrollTrigger: {
             trigger : AboutMeContainer.current,
-            start: "left+=158%",
-            end: "left+=350%",
+            start: "left+=110%",
+            end: "left+=300%",
             scrub: true,
               }
             
