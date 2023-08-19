@@ -14,8 +14,6 @@ const ContactMeScroll = () => {
 
   useEffect(() => {
 
-    
-
     const RectanguloAnimation = gsap.fromTo(
       rectangulo.current,
       {
@@ -29,7 +27,7 @@ const ContactMeScroll = () => {
         ease: "none",
         scrollTrigger: {
           trigger: contactMeContainer.current,
-          start: "left+=80%",
+          start: "left+=10%",
           end: "4000 top",
           scrub: true,
         },
@@ -48,7 +46,7 @@ const ContactMeScroll = () => {
       duration: 2,
       scrollTrigger: {
         trigger: contactMeContainer.current,
-        start: "left+=320%",
+        start: "left+=360%",
         end: "left+=400%",  
         scrub: true,
       },
