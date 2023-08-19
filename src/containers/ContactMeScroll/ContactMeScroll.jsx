@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import emailjs from '@emailjs/browser';
 import './style.css';
 import Name from '../../components/Name/Name';
+
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ContactMeScroll = () => {
   const contactMeContainer = useRef(null);
@@ -11,6 +14,15 @@ const ContactMeScroll = () => {
   const lines = useRef([]);
   const chords = useRef([]);
   const nameRef = useRef(null);
+  
+  const form = useRef();
+  const [isSent, setIsSent] = useState(false);
+  const [nameValue, setNameValue] = useState('');
+  const [emailValue, setEmailValue] = useState('');
+  const [messageValue, setMessageValue] = useState('');
+
+  const VITE_EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+  const VITE_EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
   useEffect(() => {
 
@@ -97,22 +109,44 @@ const ContactMeScroll = () => {
     })
   };
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(VITE_EMAILJS_SERVICE_ID, 'template_coloozq', form.current, VITE_EMAILJS_PUBLIC_KEY)
+      .then((result) => {
+        console.log(result.text);
+        setIsSent(true);
+        setNameValue('');
+        setEmailValue('');
+        setMessageValue('');
+        setOpen(true);
+      }, (error) => {
+        console.log(error.text);
+      });
+  };
+
   return (
     <div ref={ contactMeContainer } id='Contáctame' className='sections contact_container'>
 
       <div ref={ rectangulo } className='rectangulo'></div>
 
       <div ref={ (el) => lines.current[0] = el } className='CflexBlocks_line Cline1'>
-        <div className='title_container' ref={ nameRef }>
-            <Name color={"black"} text={ "Contáctame" }/>
-        </div>
+          <div className='title_container' ref={ nameRef }>
+              <Name color={"black"} text={ "Contáctame" }/>
+          </div>
       </div>
-      <div ref={ (el) => lines.current[1] = el } className='CflexBlocks_line Cline2'>
-        <div>
-          
-        </div>
+      
+      <div ref={ (el) => lines.current[1] = el } className='CflexBlocks_line Cline2'></div>
+
+      <div ref={ (el) => lines.current[2] = el } className='CflexBlocks_line Cline3'>
+        <form className='form__container' ref={form} onSubmit={sendEmail}>
+          <input onChange={(e) => setNameValue(e.target.value)} type='text'></input>
+          <input onChange={(e) => setNameValue(e.target.value)} type='text'></input>
+          <input onChange={(e) => setNameValue(e.target.value)} type='text'></input>
+          <button type='submit'>SEND</button>
+        </form>
       </div>
-      <div ref={ (el) => lines.current[2] = el } className='CflexBlocks_line Cline3'></div>
+      
       <div ref={ (el) => lines.current[3] = el } className='CflexBlocks_line Cline4'></div>
       <div ref={ (el) => lines.current[4] = el } className='CflexBlocks_line Cline5'></div>
       <div ref={ (el) => lines.current[5] = el } className='CflexBlocks_line Cline6'></div>
