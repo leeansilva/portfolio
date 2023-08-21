@@ -38,7 +38,7 @@ const AboutMeScroll = ( { triggerRef2 } ) => {
             duration: 1,
             scrollTrigger: {
             trigger : AboutMeContainer.current,
-            start: "left+=110%",
+            start: "left+=116%",
             end: "left+=300%",
             scrub: true,
               }
