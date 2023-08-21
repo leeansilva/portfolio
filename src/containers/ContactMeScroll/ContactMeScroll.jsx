@@ -15,7 +15,7 @@ const ContactMeScroll = () => {
   const chords = useRef([]);
   const nameRef = useRef(null);
   
-  const form = useRef();
+  const form = useRef(null);
   const [isSent, setIsSent] = useState(false);
   const [nameValue, setNameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
@@ -119,7 +119,6 @@ const ContactMeScroll = () => {
         setNameValue('');
         setEmailValue('');
         setMessageValue('');
-        setOpen(true);
       }, (error) => {
         console.log(error.text);
       });
@@ -140,10 +139,10 @@ const ContactMeScroll = () => {
 
       <div ref={ (el) => lines.current[2] = el } className='CflexBlocks_line Cline3'>
         <form className='form__container' ref={form} onSubmit={sendEmail}>
-          <input onChange={(e) => setNameValue(e.target.value)} type='text'></input>
-          <input onChange={(e) => setNameValue(e.target.value)} type='text'></input>
-          <input onChange={(e) => setNameValue(e.target.value)} type='text'></input>
-          <button type='submit'>SEND</button>
+          <input value={nameValue} onChange={(e) => setNameValue(e.target.value)} type='text'></input>
+          <input  value={emailValue} onChange={(e) => setEmailValue(e.target.value)} type='text'></input>
+          <input value={messageValue} onChange={(e) => setMessageValue(e.target.value)} type='text'></input>
+          <button value='Send' type='submit'>SEND</button>
         </form>
       </div>
       
