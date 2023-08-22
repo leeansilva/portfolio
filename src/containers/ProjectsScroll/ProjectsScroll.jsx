@@ -169,9 +169,9 @@ const ProjectsScroll = () => {
                         <div ref={ (el) => columns.current[5] = el } className="dinamicColumns"></div>
                       </div>
 
-                    <img className='imgProjects twitter' src='https://i.postimg.cc/Y9LFV6pr/twitterclone.png'></img>https://i.postimg.cc/qRTyCtsj/just-play.png
+                    <img className='imgProjects twitter' src='https://i.postimg.cc/Y9LFV6pr/twitterclone.png'></img>
                   </div>
-                  <div ref={ (el) => projects.current[1] = el } className='project1 '>
+                  <div ref={ (el) => projects.current[1] = el } className='project1'>
                   <div className="columnsContainer" onMouseLeave={handleHoverOut} onMouseEnter={ handleHover }>
                         <div ref={ (el) => columns2.current[0] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns2.current[1] = el } className="dinamicColumns"></div>
