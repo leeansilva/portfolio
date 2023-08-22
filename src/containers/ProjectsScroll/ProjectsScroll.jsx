@@ -17,27 +17,41 @@ const ProjectsScroll = () => {
     const rowProjects = useRef(null);
     const projects = useRef([]);
     const columns = useRef([]);
+    const columns2 = useRef([]);
 
     const handleHover = () => {
-
       gsap.killTweensOf(columns.current);
-
       const tl1 = gsap
       .timeline()
-      .staggerTo(columns.current, 0.2, {
+      .staggerTo(columns.current, 0.1, {
         height: "100%"
-      }, 0.2) // 0.2 es el tiempo de separación entre cada animación
+      }, 0.1) // 0.2 es el tiempo de separación entre cada animación
+    };
+
+    const handleHover2 = () => {
+      gsap.killTweensOf(columns2.current);
+      const tl1 = gsap
+      .timeline()
+      .staggerTo(columns2.current, 0.1, {
+        height: "100%"
+      }, 0.1) // 0.2 es el tiempo de separación entre cada animación
     };
 
     const handleHoverOut = () => {
-
-      gsap.killTweensOf(columns.current);
-
+      gsap.killTweensOf(columns.current);      
       const tl1 = gsap
       .timeline()
-      .staggerTo(columns.current, 0.2, {
+      .staggerTo(columns.current, 0.1, {
         height: "0%"
-      }, 0.2) // 0.2 es el tiempo de separación entre cada animación
+      }, 0.1) // 0.2 es el tiempo de separación entre cada animación
+    };
+    const handleHoverOut2 = () => {
+      gsap.killTweensOf(columns2.current);
+      const tl1 = gsap
+      .timeline()
+      .staggerTo(columns2.current, 0.1, {
+        height: "0%"
+      }, 0.1) // 0.2 es el tiempo de separación entre cada animación
     };
 
 
@@ -209,6 +223,14 @@ const ProjectsScroll = () => {
                     <img className='imgProjects twitter' src='https://i.imgur.com/pJHuwg0.png'></img>
                   </div>
                   <div ref={ (el) => projects.current[1] = el } className='project1 '>
+                      <div className="columnsContainer" onMouseLeave={handleHoverOut2} onMouseEnter={ handleHover2 }>
+                          <div ref={ (el) => columns2.current[0] = el } className="dinamicColumns2"></div>
+                          <div ref={ (el) => columns2.current[1] = el } className="dinamicColumns2"></div>
+                          <div ref={ (el) => columns2.current[2] = el } className="dinamicColumns2"></div>
+                          <div ref={ (el) => columns2.current[3] = el } className="dinamicColumns2"></div>
+                          <div ref={ (el) => columns2.current[4] = el } className="dinamicColumns2"></div>
+                          <div ref={ (el) => columns2.current[5] = el } className="dinamicColumns2"></div>
+                        </div>
                     <img className='imgProjects justPlay' src='https://i.imgur.com/KTZVvIP.png'></img>
                   </div>
 

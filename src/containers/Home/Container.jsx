@@ -73,14 +73,9 @@ const Container = () => {
               </div>       
           </div> 
 
-        
-
         <AboutMeScroll triggerRef2={ triggerRef }/>
-        
-      
+             
         <ProjectsScroll triggerRef3={ triggerRef }/>
-
-
 
         <ContactMeScroll/>
       </div>
