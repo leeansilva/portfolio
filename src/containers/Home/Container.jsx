@@ -16,6 +16,7 @@ const Container = () => {
   const homeContainer = useRef(null);
   const triggerRef = useRef(null);
   gsap.registerPlugin(ScrollTrigger);
+  const contactMeContainer = useRef(null);
 
   const handleClickOut = () =>{
     setClickOut(true);
@@ -69,7 +70,7 @@ const Container = () => {
                 <h1 className='Name_container_text2'>Apasionado por crear experiencias digitales excepcionales.</h1>
               </div>
               <div className='button__container'>
-                <Button title={'Contáctame'} color={'light'} /> 
+                <Button contactMeContainer={contactMeContainer} title={'Contáctame'} color={'light'} /> 
               </div>       
           </div> 
 
@@ -77,7 +78,9 @@ const Container = () => {
              
         <ProjectsScroll triggerRef3={ triggerRef }/>
 
-        <ContactMeScroll/>
+
+
+        <ContactMeScroll ref={contactMeContainer} />
       </div>
 
    

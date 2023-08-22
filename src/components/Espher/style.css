@@ -4,6 +4,9 @@
     justify-content: center;
     width: 40% !important;
     margin: 0 auto;
+    position: absolute;
+    left: 160px;
+    top: -100px;
     border-radius: 50%;
     height: 50%;
     /* border: 1px solid red; */
@@ -12,9 +15,11 @@
 .tagcloud--item{
     color: #000000;
     font-family: Verdana,Geneva,sans-serif; 
+    font-size: 20px;
 }
 
 .tagcloud--item:hover{
-    color: #dfdf73;
+    color: #fff;
+    background-color: #000000;
     cursor: pointer;
 }

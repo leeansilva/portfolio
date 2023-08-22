@@ -7,7 +7,7 @@ const Espher = () => {
     <TagCloud
         className='esferita'
         options={(w: Window & typeof globalThis): TagCloudOptions => ({
-            radius: Math.min(500, w.innerWidth, w.innerHeight) / 2,
+            radius: Math.min(800, w.innerWidth, w.innerHeight) / 2,
             maxSpeed: "fast",
         })}
         onClick={(tag: string, ev: MouseEvent) => console.log(tag)}

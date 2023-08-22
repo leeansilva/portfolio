@@ -4,7 +4,7 @@ import React, { StrictMode, useEffect, useRef, useState } from 'react';
 
 //cuadno importemos este comp, importarlo dentro de un div para manejar su posi
 
-const Button = ({color, title}) => {
+const Button = ({color, title,contactMeContainer}) => {
     const [hoverTime, setHoverTime] = useState(0);
     const [animationEnter, setAnimationEnter] = useState(false);
     const [animationLeave, setAnimationLeave] = useState(false);
@@ -16,10 +16,8 @@ const Button = ({color, title}) => {
 
   const handleMouseEnter = () => {
     
-    
     setAnimationEnter(true);
     
-
     const textAnimation = gsap
     .timeline()
     .to(text.current, {
@@ -86,6 +84,12 @@ const Button = ({color, title}) => {
       }
   };
 
+  const handleClick = () => {
+    if (contactMeContainer.current) {
+      contactMeContainer.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
 return (
     <div style={{ border: color === 'light' ? '1px outset #fff' : '1px outset #000'}} className='Button' 
     onMouseEnter={ ()=>{
@@ -95,7 +99,7 @@ return (
         return
       }
     }} 
-    // onMouseLeave={hoverTime == 1 ? handleMouseLeave : () => setTimeout(handleMouseLeave, 500)}
+    onClick={()=>handleClick()}
     onMouseLeave={() => {
       if (!animationEnter && !animationLeave) {
         handleMouseLeave();
