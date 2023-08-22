@@ -40,11 +40,30 @@ const ContactMeScroll = () => {
         scrollTrigger: {
           trigger: contactMeContainer.current,
           start: "left+=10%",
-          end: "4000 top",
+          end: "left+=10%",
           scrub: true,
         },
       }
     );
+
+    const createAnimationContent = gsap.fromTo(
+        form.current,{
+          opacity: 0,
+         
+        },{
+          opacity: 1,
+         
+          ease:'none',
+          duration: 1,
+          scrollTrigger: {
+            trigger: contactMeContainer.current,
+            start:  "left+=390%",
+            end: "left+=400%",
+            scrub: true,
+          }
+        }
+      )
+    
 
     const linesAnimation = gsap.fromTo(lines.current, {
       height: "50%",
@@ -85,10 +104,28 @@ const ContactMeScroll = () => {
         }
       });
 
+      const line2Animation = gsap.fromTo (lines.current[1],
+        {
+          height: "20%",
+        },
+        {
+          height: "100%",
+          ease: "none",
+          duration: 1,
+          scrollTrigger: {
+            trigger: contactMeContainer.current,
+            start: "left+=135%",
+            end: "520% top",
+            scrub: true
+          }
+        });
+
     return () =>{
       RectanguloAnimation.kill();
       linesAnimation.kill();
       line1Animation.kill();
+      line2Animation.kill();
+      createAnimationContent.kill();
     }
 
   }, []);
@@ -111,8 +148,9 @@ const ContactMeScroll = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+    console.log(form.current)
 
-    emailjs.sendForm(VITE_EMAILJS_SERVICE_ID, 'template_coloozq', form.current, VITE_EMAILJS_PUBLIC_KEY)
+    emailjs.sendForm(VITE_EMAILJS_SERVICE_ID, 'template_xzenlsi', form.current, VITE_EMAILJS_PUBLIC_KEY)
       .then((result) => {
         console.log(result.text);
         setIsSent(true);
@@ -131,25 +169,25 @@ const ContactMeScroll = () => {
 
       <div ref={ (el) => lines.current[0] = el } className='CflexBlocks_line Cline1'>
           <div className='title_container' ref={ nameRef }>
-              <Name color={"black"} text={ "Contáctame" }/>
+              <Name fontSize={"80px"} color={"black"} text={ "Contáctame" }/>
           </div>
       </div>
       
-      <div ref={ (el) => lines.current[1] = el } className='CflexBlocks_line Cline2'></div>
-
-      <div ref={ (el) => lines.current[2] = el } className='CflexBlocks_line Cline3'>
-        <form className='form__container' ref={form} onSubmit={sendEmail}>
-          <input value={nameValue} onChange={(e) => setNameValue(e.target.value)} type='text'></input>
-          <input  value={emailValue} onChange={(e) => setEmailValue(e.target.value)} type='text'></input>
-          <input value={messageValue} onChange={(e) => setMessageValue(e.target.value)} type='text'></input>
-          <button value='Send' type='submit'>SEND</button>
-        </form>
+      <div ref={ (el) => lines.current[1] = el } className='CflexBlocks_line Cline2'>
       </div>
+        <form className='form' ref={form} onSubmit={sendEmail}>
+          <input placeholder='Name' className='inputName' value={nameValue} onChange={(e) => setNameValue(e.target.value)} type='text'></input>
+          <input placeholder='Email' className='inputMail' value={emailValue} onChange={(e) => setEmailValue(e.target.value)} type='email'></input>
+          <input placeholder='Message' className='inputMessage' value={messageValue} onChange={(e) => setMessageValue(e.target.value)} type='text'></input>
+          <button type='submit'>SEND</button>
+        </form>
+
+      <div ref={ (el) => lines.current[2] = el } className='CflexBlocks_line Cline3'></div>
       
       <div ref={ (el) => lines.current[3] = el } className='CflexBlocks_line Cline4'></div>
       <div ref={ (el) => lines.current[4] = el } className='CflexBlocks_line Cline5'></div>
       <div ref={ (el) => lines.current[5] = el } className='CflexBlocks_line Cline6'></div>
-      <div ref={ (el) => lines.current[6] = el } className='CflexBlocks_line Cline7'></div>
+      <div ref={ (el) => lines.current[6] = el } className='CflexBlocks_line Cline7'> Desing & Built by Leandro Silva.</div>
        
       <div className='flexCuerdas'>
         <div ref={ (el) => chords.current[0] = el } onMouseEnter={ handleHover } className="chord1 chord"></div>
