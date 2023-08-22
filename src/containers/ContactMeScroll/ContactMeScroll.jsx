@@ -40,7 +40,7 @@ const ContactMeScroll = () => {
         scrollTrigger: {
           trigger: contactMeContainer.current,
           start: "left+=10%",
-          end: "left+=10%",
+          end: "left+=400%",
           scrub: true,
         },
       }
@@ -187,7 +187,7 @@ const ContactMeScroll = () => {
       <div ref={ (el) => lines.current[3] = el } className='CflexBlocks_line Cline4'></div>
       <div ref={ (el) => lines.current[4] = el } className='CflexBlocks_line Cline5'></div>
       <div ref={ (el) => lines.current[5] = el } className='CflexBlocks_line Cline6'></div>
-      <div ref={ (el) => lines.current[6] = el } className='CflexBlocks_line Cline7'> Desing & Built by Leandro Silva.</div>
+      <div ref={ (el) => lines.current[6] = el } className='CflexBlocks_line Cline7'> <p>Desing & Built by Leandro Silva.</p></div>
        
       <div className='flexCuerdas'>
         <div ref={ (el) => chords.current[0] = el } onMouseEnter={ handleHover } className="chord1 chord"></div>
