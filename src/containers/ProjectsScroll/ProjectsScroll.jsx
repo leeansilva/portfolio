@@ -21,29 +21,6 @@ const ProjectsScroll = () => {
     const justPlayInfo = useRef(null);
     const Twitterinfo = useRef(null);
 
-    const [translateXValue, setTranslateXValue] = useState('');
-
-    useEffect(() => {
-  
-      const handleResize = () => {
-        const screenHeight = window.innerHeight;
-        const startValue = Math.ceil(screenHeight * 0.445);
-        const endValue = screenHeight * 4.5;
-
-        setTranslateXValue(startValue)
-        
-        console.log('start Value: ' + startValue + ' end Value: ' + endValue)
-        console.log(screenHeight)
-      };
-      
-      //translateXValue siempre me da 120, pero si se lo mando usando useState no me funciona bien, pero si le hardcodeo 120vw si, que esta pasando?
-      handleResize();
-      window.addEventListener("resize", handleResize);
-      console.log(translateXValue)
-      
-        
-    }, []);
-
     const calculateResult = (innerHeight) => {
       const testData = [
         { innerHeight: 973, expectedResult: 215 },
@@ -60,16 +37,21 @@ const ProjectsScroll = () => {
         { innerHeight: 818, expectedResult: 334 },
         { innerHeight: 806, expectedResult: 332 },
         { innerHeight: 776, expectedResult: 346 },
-        { innerHeight: 757, expectedResult: 345 }
+        { innerHeight: 756, expectedResult: 345 },
+        { innerHeight: 746, expectedResult: 350 },
+        { innerHeight: 736, expectedResult: 353 },
+        { innerHeight: 726, expectedResult: 355 },
+        { innerHeight: 716, expectedResult: 357 },
+        { innerHeight: 717, expectedResult: 360 }
       ];
     
-      const closestMatch = testData.reduce((closest, data) => {
-        const diff = Math.abs(data.innerHeight - innerHeight);
-        if (diff < Math.abs(closest.diff)) {
-          return { diff, expectedResult: data.expectedResult };
-        }
-        return closest;
-      }, { diff: Infinity, expectedResult: null });
+    const closestMatch = testData.reduce((closest, data) => {
+      const diff = Math.abs(data.innerHeight - innerHeight);
+      if (diff < Math.abs(closest.diff)) {
+        return { diff, expectedResult: data.expectedResult };
+      }
+      return closest;
+    }, { diff: Infinity, expectedResult: null });
     
       return closestMatch.expectedResult;
     };
@@ -154,27 +136,11 @@ const ProjectsScroll = () => {
         duration: 1,
         scrollTrigger: {
         trigger : ProjetcScrollContainer.current,
-        start: `left+=${calculatedResult}%`,
+        start: `left+=360%`,
         end: "left+=450%",
         scrub: true,
           }
       })
-
-      // const ProjecsContainerAnimation = gsap.fromTo(ProjetcScrollContainer.current, {
-      //   translateX: "0px",
-      //   gap:0,
-      // }, {
-      //   translateX:`40vw`,
-      //   display:"none",
-      //   ease: "none",
-      //   duration: 1,
-      //   scrollTrigger: {
-      //   trigger : ProjetcScrollContainer.current,
-      //   start: "left+=260%",
-      //   end: "left+=450%",
-      //   scrub: true,
-      //     }
-      // })
 
       const linesAnimation = gsap.fromTo(lines.current, {
         height: "50%",
@@ -258,7 +224,7 @@ const ProjectsScroll = () => {
         projectsAnimation.kill();
       }
      
-    }, [translateXValue])
+    }, [])
     
 
   return (
