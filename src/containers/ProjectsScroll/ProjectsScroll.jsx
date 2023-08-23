@@ -37,16 +37,21 @@ const ProjectsScroll = () => {
         { innerHeight: 818, expectedResult: 334 },
         { innerHeight: 806, expectedResult: 332 },
         { innerHeight: 776, expectedResult: 346 },
-        { innerHeight: 757, expectedResult: 345 }
+        { innerHeight: 756, expectedResult: 345 },
+        { innerHeight: 746, expectedResult: 350 },
+        { innerHeight: 736, expectedResult: 353 },
+        { innerHeight: 726, expectedResult: 355 },
+        { innerHeight: 716, expectedResult: 357 },
+        { innerHeight: 717, expectedResult: 360 }
       ];
     
-      const closestMatch = testData.reduce((closest, data) => {
-        const diff = Math.abs(data.innerHeight - innerHeight);
-        if (diff < Math.abs(closest.diff)) {
-          return { diff, expectedResult: data.expectedResult };
-        }
-        return closest;
-      }, { diff: Infinity, expectedResult: null });
+    const closestMatch = testData.reduce((closest, data) => {
+      const diff = Math.abs(data.innerHeight - innerHeight);
+      if (diff < Math.abs(closest.diff)) {
+        return { diff, expectedResult: data.expectedResult };
+      }
+      return closest;
+    }, { diff: Infinity, expectedResult: null });
     
       return closestMatch.expectedResult;
     };
@@ -131,7 +136,7 @@ const ProjectsScroll = () => {
         duration: 1,
         scrollTrigger: {
         trigger : ProjetcScrollContainer.current,
-        start: `left+=${calculatedResult}%`,
+        start: `left+=360%`,
         end: "left+=450%",
         scrub: true,
           }
