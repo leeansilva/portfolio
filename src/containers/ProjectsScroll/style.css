@@ -92,3 +92,13 @@ h4{
     color: #fff;
     font-size: 15px;
 }
+
+.justPlayInfo{
+    background-color: red;
+    color: #000;
+    height: 100%;
+    scale: 0;
+}
+
+
+

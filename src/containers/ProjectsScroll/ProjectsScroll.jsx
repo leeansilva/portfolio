@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Name from '../../components/Name/Name';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,20 +18,99 @@ const ProjectsScroll = () => {
     const projects = useRef([]);
     const columns = useRef([]);
     const columns2 = useRef([]);
+    const justPlayInfo = useRef(null);
+    const Twitterinfo = useRef(null);
+
+    const [translateXValue, setTranslateXValue] = useState('');
+
+    useEffect(() => {
+  
+      const handleResize = () => {
+        const screenHeight = window.innerHeight;
+        const startValue = Math.ceil(screenHeight * 0.445);
+        const endValue = screenHeight * 4.5;
+
+        setTranslateXValue(startValue)
+        
+        console.log('start Value: ' + startValue + ' end Value: ' + endValue)
+        console.log(screenHeight)
+      };
+      
+      //translateXValue siempre me da 120, pero si se lo mando usando useState no me funciona bien, pero si le hardcodeo 120vw si, que esta pasando?
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      console.log(translateXValue)
+      
+        
+    }, []);
+
+    const calculateResult = (innerHeight) => {
+      const testData = [
+        { innerHeight: 973, expectedResult: 215 },
+        { innerHeight: 963, expectedResult: 230 },
+        { innerHeight: 942, expectedResult: 245 },
+        { innerHeight: 924, expectedResult: 255 },
+        { innerHeight: 903, expectedResult: 265 },
+        { innerHeight: 890, expectedResult: 295 },
+        { innerHeight: 880, expectedResult: 300 },
+        { innerHeight: 872, expectedResult: 310 },
+        { innerHeight: 860, expectedResult: 316 },
+        { innerHeight: 838, expectedResult: 318 },
+        { innerHeight: 834, expectedResult: 330 },
+        { innerHeight: 818, expectedResult: 334 },
+        { innerHeight: 806, expectedResult: 332 },
+        { innerHeight: 776, expectedResult: 346 },
+        { innerHeight: 757, expectedResult: 345 }
+      ];
+    
+      const closestMatch = testData.reduce((closest, data) => {
+        const diff = Math.abs(data.innerHeight - innerHeight);
+        if (diff < Math.abs(closest.diff)) {
+          return { diff, expectedResult: data.expectedResult };
+        }
+        return closest;
+      }, { diff: Infinity, expectedResult: null });
+    
+      return closestMatch.expectedResult;
+    };
+    
+    const windowHeight = window.innerHeight;
+    const calculatedResult = calculateResult(windowHeight);
+    console.log(calculatedResult);
 
     const handleHover = (element) => {
-      
       gsap.killTweensOf(element == '1' ? columns.current : columns2.current );
-
       const tl1 = gsap
       .timeline()
       .staggerTo(element == '1' ? columns.current : columns2.current , 0.2, {
         height: "100%"
       }, 0.2) // 0.2 es el tiempo de separación entre cada animación
+      const projectInfoLine = gsap.fromTo(element == '1' ? columns.current[2] : columns2.current[2], {
+        width: "20%",
+        gap:0,
+      }, {
+        width: "150%",
+        ease: "none",
+        delay:0.8,
+        duration: 0.6,
+      })
+      const infoContainer = gsap.fromTo(element == '1' ? Twitterinfo.current : justPlayInfo.current, {
+        scale: 0
+      }, {
+        scale: 1,
+        display: 'block',
+        ease: "none",
+        delay:1.2,
+        duration: 0.1
+      })
+
+      return () =>{
+        projectInfoLine.kill();
+        infoContainer.kill();
+      }
     };
 
     const handleHoverOut = (element) => {
-
       gsap.killTweensOf(element == '1' ? columns.current : columns2.current );
 
       const tl1 = gsap
@@ -39,6 +118,26 @@ const ProjectsScroll = () => {
       .staggerTo(element == '1' ? columns.current : columns2.current , 0.2, {
         height: "0%"
       }, 0.2) // 0.2 es el tiempo de separación entre cada animación
+      const projectInfoLine = gsap.fromTo(element == '1' ? columns.current[2] : columns2.current[2], {
+        width: "150%",
+        gap:0,
+      }, {
+        width: "20%",
+        ease: "none",
+        duration: 0.6,
+      })
+      const infoContainer = gsap.fromTo(element == '1' ? Twitterinfo.current : justPlayInfo.current, {
+        scale: 1,
+        gap:0,
+      }, {
+        scale: 0,
+        ease: "none",
+        duration: 0.2,
+      })
+      return () =>{
+        projectInfoLine.kill();
+        infoContainer.kill();
+      }
     };
 
 
@@ -49,17 +148,33 @@ const ProjectsScroll = () => {
         translateX: "0px",
         gap:0,
       }, {
-        translateX: "120vw",
+        translateX:`100vw`,
         display:"none",
         ease: "none",
         duration: 1,
         scrollTrigger: {
         trigger : ProjetcScrollContainer.current,
-        start: "left+=260%",
+        start: `left+=${calculatedResult}%`,
         end: "left+=450%",
         scrub: true,
           }
       })
+
+      // const ProjecsContainerAnimation = gsap.fromTo(ProjetcScrollContainer.current, {
+      //   translateX: "0px",
+      //   gap:0,
+      // }, {
+      //   translateX:`40vw`,
+      //   display:"none",
+      //   ease: "none",
+      //   duration: 1,
+      //   scrollTrigger: {
+      //   trigger : ProjetcScrollContainer.current,
+      //   start: "left+=260%",
+      //   end: "left+=450%",
+      //   scrub: true,
+      //     }
+      // })
 
       const linesAnimation = gsap.fromTo(lines.current, {
         height: "50%",
@@ -143,7 +258,7 @@ const ProjectsScroll = () => {
         projectsAnimation.kill();
       }
      
-    }, [])
+    }, [translateXValue])
     
 
   return (
@@ -163,7 +278,13 @@ const ProjectsScroll = () => {
                       <div className="columnsContainer" onMouseLeave={()=>handleHoverOut('1')} onMouseEnter={()=>handleHover('1') }>
                         <div ref={ (el) => columns.current[0] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns.current[1] = el } className="dinamicColumns"></div>
-                        <div ref={ (el) => columns.current[2] = el } className="dinamicColumns"></div>
+                        <div ref={ (el) => columns.current[2] = el } className="dinamicColumns">
+                          <div ref = { Twitterinfo } className='justPlayInfo'>
+                              <h1>Titulo</h1>
+                              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum magnam tenetur dolorum, dignissimos sequi fugiat i</p>
+                              <a href='hola'>link</a>
+                            </div>
+                          </div>
                         <div ref={ (el) => columns.current[3] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns.current[4] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns.current[5] = el } className="dinamicColumns"></div>
@@ -173,9 +294,16 @@ const ProjectsScroll = () => {
                   </div>
                   <div ref={ (el) => projects.current[1] = el } className='project1'>
                   <div className="columnsContainer" onMouseLeave={handleHoverOut} onMouseEnter={ handleHover }>
+                       
                         <div ref={ (el) => columns2.current[0] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns2.current[1] = el } className="dinamicColumns"></div>
-                        <div ref={ (el) => columns2.current[2] = el } className="dinamicColumns"></div>
+                        <div ref={ (el) => columns2.current[2] = el } className="dinamicColumns">
+                          <div ref = { justPlayInfo } className='justPlayInfo'>
+                            <h1>Titulo</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum magnam tenetur dolorum, dignissimos sequi fugiat i</p>
+                            <a href='hola'>link</a>
+                          </div>
+                        </div>
                         <div ref={ (el) => columns2.current[3] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns2.current[4] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns2.current[5] = el } className="dinamicColumns"></div>
