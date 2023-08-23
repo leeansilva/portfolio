@@ -21,29 +21,6 @@ const ProjectsScroll = () => {
     const justPlayInfo = useRef(null);
     const Twitterinfo = useRef(null);
 
-    const [translateXValue, setTranslateXValue] = useState('');
-
-    useEffect(() => {
-  
-      const handleResize = () => {
-        const screenHeight = window.innerHeight;
-        const startValue = Math.ceil(screenHeight * 0.445);
-        const endValue = screenHeight * 4.5;
-
-        setTranslateXValue(startValue)
-        
-        console.log('start Value: ' + startValue + ' end Value: ' + endValue)
-        console.log(screenHeight)
-      };
-      
-      //translateXValue siempre me da 120, pero si se lo mando usando useState no me funciona bien, pero si le hardcodeo 120vw si, que esta pasando?
-      handleResize();
-      window.addEventListener("resize", handleResize);
-      console.log(translateXValue)
-      
-        
-    }, []);
-
     const calculateResult = (innerHeight) => {
       const testData = [
         { innerHeight: 973, expectedResult: 215 },
@@ -160,22 +137,6 @@ const ProjectsScroll = () => {
           }
       })
 
-      // const ProjecsContainerAnimation = gsap.fromTo(ProjetcScrollContainer.current, {
-      //   translateX: "0px",
-      //   gap:0,
-      // }, {
-      //   translateX:`40vw`,
-      //   display:"none",
-      //   ease: "none",
-      //   duration: 1,
-      //   scrollTrigger: {
-      //   trigger : ProjetcScrollContainer.current,
-      //   start: "left+=260%",
-      //   end: "left+=450%",
-      //   scrub: true,
-      //     }
-      // })
-
       const linesAnimation = gsap.fromTo(lines.current, {
         height: "50%",
         translateX: "120vw",
@@ -258,7 +219,7 @@ const ProjectsScroll = () => {
         projectsAnimation.kill();
       }
      
-    }, [translateXValue])
+    }, [])
     
 
   return (
