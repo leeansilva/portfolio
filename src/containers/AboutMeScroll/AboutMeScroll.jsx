@@ -6,6 +6,7 @@ import './style.css';
 import Name from '../../components/Name/Name';
 import Button from '../../components/Button/Button';
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin()
 
 //posiblemente para projects, darle un position absolute a las lineas, y moverlas desde -100vw hasta 0px
 
