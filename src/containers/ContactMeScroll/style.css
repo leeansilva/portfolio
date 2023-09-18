@@ -1,10 +1,10 @@
 .contact_container{
-    position: absolute;
+    position: fixed;
     left: 300vw;
     display: flex;
     background-color: none;
     flex-direction: column;
-    background-color: #000
+    background-color: hsl(0, 10%, 90%)
 }
 
 .rectangulo {

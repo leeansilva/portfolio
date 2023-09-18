@@ -1,13 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Name from '../../components/Name/Name';
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 
 import './style.css'
 import Button from '../../components/Button/Button';
 
-const ProjectsScroll = () => {
+const ProjectsScroll = ({isActiveProjects}) => {
   
     const ProjetcScrollContainer = useRef(null);
     const nameRef = useRef(null);
@@ -20,45 +18,6 @@ const ProjectsScroll = () => {
     const columns2 = useRef([]);
     const justPlayInfo = useRef(null);
     const Twitterinfo = useRef(null);
-
-    const calculateResult = (innerHeight) => {
-      const testData = [
-        { innerHeight: 973, expectedResult: 215 },
-        { innerHeight: 963, expectedResult: 230 },
-        { innerHeight: 942, expectedResult: 245 },
-        { innerHeight: 924, expectedResult: 255 },
-        { innerHeight: 903, expectedResult: 265 },
-        { innerHeight: 890, expectedResult: 295 },
-        { innerHeight: 880, expectedResult: 300 },
-        { innerHeight: 872, expectedResult: 310 },
-        { innerHeight: 860, expectedResult: 316 },
-        { innerHeight: 838, expectedResult: 318 },
-        { innerHeight: 834, expectedResult: 330 },
-        { innerHeight: 818, expectedResult: 334 },
-        { innerHeight: 806, expectedResult: 332 },
-        { innerHeight: 776, expectedResult: 346 },
-        { innerHeight: 756, expectedResult: 345 },
-        { innerHeight: 746, expectedResult: 350 },
-        { innerHeight: 736, expectedResult: 353 },
-        { innerHeight: 726, expectedResult: 355 },
-        { innerHeight: 716, expectedResult: 357 },
-        { innerHeight: 717, expectedResult: 360 }
-      ];
-    
-    const closestMatch = testData.reduce((closest, data) => {
-      const diff = Math.abs(data.innerHeight - innerHeight);
-      if (diff < Math.abs(closest.diff)) {
-        return { diff, expectedResult: data.expectedResult };
-      }
-      return closest;
-    }, { diff: Infinity, expectedResult: null });
-    
-      return closestMatch.expectedResult;
-    };
-    
-    const windowHeight = window.innerHeight;
-    const calculatedResult = calculateResult(windowHeight);
-    console.log(calculatedResult);
 
     const handleHover = (element) => {
       gsap.killTweensOf(element == '1' ? columns.current : columns2.current );
@@ -122,109 +81,93 @@ const ProjectsScroll = () => {
       }
     };
 
-
-
     useEffect(() => {
+      console.log(isActiveProjects)
 
-      const ProjecsContainerAnimation = gsap.fromTo(ProjetcScrollContainer.current, {
-        translateX: "0px",
-        gap:0,
-      }, {
-        translateX:`100vw`,
-        display:"none",
-        ease: "none",
-        duration: 1,
-        scrollTrigger: {
-        trigger : ProjetcScrollContainer.current,
-        start: `left+=360%`,
-        end: "left+=450%",
-        scrub: true,
-          }
-      })
+      // const ProjecsContainerAnimation = gsap.fromTo(ProjetcScrollContainer.current, {
+      //   translateX: isActive === 'previous'
+      //   ? '0px'
+      //   : isActive === 'next'
+      //   ? '0vw'
+      //   : isActive === 'next contactme'
+      //   && '10vw',
+      // }, {
+      //   translateX: isActive === 'next'
+      //   ? '0vw'
+      //   : isActive === 'previous'
+      //   ? '0px'
+      //   : isActive === 'previous projects'
+      //   && '10vw',
+      //   ease: "none",
+      //   duration: 1,
+      // })
 
       const linesAnimation = gsap.fromTo(lines.current, {
-        height: "50%",
-        translateX: "120vw",
-        marginBottom: "100px",
+        translateX:isActiveProjects == 'next'  && "120vw" || isActiveProjects == 'previous contactme',
       },{
-        translateX: "0px",
-        marginBottom:'0px',
-        height: "20%",
-        duration: 2,
-        scrollTrigger: {
-          trigger: ProjetcScrollContainer.current,
-          start: "left+=240%",
-          end: "left+=320%",
-          scrub: true,
-        },
+        translateX:isActiveProjects == 'previous' || isActiveProjects == 'next contactme' && "0%",
+        duration: 0.4,
         stagger:{
-          from: "left",
-          amount: 2
+          from: isActiveProjects == 'previous contactme' ? "left" : isActiveProjects == 'next' && 'right',
+          amount: 0.4
         },
         ease: 'none'
       });
         
-      const line1Animation = gsap.fromTo (line1.current,
-      {
-        height: "160%",
-      },
-      {
-        height: "50%",
-        ease: "none",
-        duration: 1,
-        scrollTrigger: {
-          trigger: ProjetcScrollContainer.current,
-          start: "top left",
-          end: "2000 top",
-          scrub: true
-        }
-      });
+      // const line1Animation = gsap.fromTo (line1.current,
+      // {
+      //   height: "160%",
+      // },
+      // {
+      //   height: "50%",
+      //   ease: "none",
+      //   duration: 1,
+      //   scrollTrigger: {
+      //     trigger: ProjetcScrollContainer.current,
+      //     start: "top left",
+      //     end: "2000 top",
+      //     scrub: true
+      //   }
+      // });
+
       const lineProjectsAnimation = gsap.fromTo (lineProjects.current,
       {
-        translateX: "50%",
-        height: "20%",
+        translateX:isActiveProjects == 'next' || isActiveProjects == 'previous contactme' && "50%",
       },
       {
-        translateX: "0%",
-        height: "250%",
+        translateX:isActiveProjects == 'previous' || isActiveProjects == 'next contactme' && "0%",
         ease: "none",
-        duration: 1,
-        scrollTrigger: {
-          trigger: ProjetcScrollContainer.current,
-          start: "left+=150%",
-          end: "left+=200%",
-          scrub: true
-        }
+        duration: 0.5,
       });
       
 
-        const projectsAnimation = gsap.fromTo(projects.current, {
-          scale: 0
-        },{
-         scale:1,
-         ease:"none",
-          scrollTrigger: {
-          trigger: ProjetcScrollContainer.current,
-          start: "left+=250%",
-          end: "left+=350%",
-          scrub: true
-          },
-          stagger:{
-            from: "left",
-            amount: 2
-          },
-          ease: 'none'
-        });
+      //   const projectsAnimation = gsap.fromTo(projects.current, {
+      //     scale: 0
+      //   },{
+      //    scale:1,
+      //    ease:"none",
+      //     scrollTrigger: {
+      //     trigger: ProjetcScrollContainer.current,
+      //     start: "left+=250%",
+      //     end: "left+=350%",
+      //     scrub: true
+      //     },
+      //     stagger:{
+      //       from: "left",
+      //       amount: 2
+      //     },
+      //     ease: 'none'
+      //   });
   
       return () =>{
         linesAnimation.kill();
-        line1Animation.kill();
-        ProjecsContainerAnimation.kill();
+        // line1Animation.kill();
+        // ProjecsContainerAnimation.kill();
         lineProjectsAnimation.kill();
-        projectsAnimation.kill();
+        // projectsAnimation.kill();
       }
      
-    }, [])
+    }, [isActiveProjects])
     
 
   return (

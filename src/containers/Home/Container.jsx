@@ -6,53 +6,99 @@ import ProjectsScroll from '../ProjectsScroll/ProjectsScroll';
 import ContactMeScroll from '../ContactMeScroll/ContactMeScroll';
 import './style.css';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Observer } from "gsap/Observer";
 import { gsap } from "gsap";
 import Button from '../../components/Button/Button';
 
 
 const Container = () => {
   const [clickOut, setClickOut] = useState(true);
+
+  const [section0, setSection0] = useState('');
+  const [section1, setSection1] = useState('');
+  const [section2, setSection2] = useState('');
+  const [section3, setSection3] = useState('');
+
+  const sections = useRef([]);
   const homeContainer = useRef(null);
   const triggerRef = useRef(null);
-  gsap.registerPlugin(ScrollTrigger);
   const contactMeContainer = useRef(null);
-
+  
   const handleClickOut = () =>{
     setClickOut(true);
   }
+
+  const nextSection = (currentIndex) => {
+    if (currentIndex < sections.current.length - 1) {
+      const section = currentIndex + 1
+      gsap.to(homeContainer.current, {
+        x: -(section) * window.innerWidth, // Scroll to the next section
+        duration: 0.5,
+      });
+      if (section == 1){
+        setSection1('next')
+      } else if (section == 2){
+        setSection1('next projects')
+        setSection2('next')
+      } else if (section == 3){
+        setSection2('next contactme')
+      }
+    }
+  };
+
+  const previousSection = (currentIndex) => {
+    if (currentIndex > 0) {
+      const section = currentIndex - 1
+      gsap.to(homeContainer.current, {
+        x: -(section) * window.innerWidth, // Scroll to the previous section
+        duration: 0.5,
+      });
+      if(section == 0){
+        setSection1('previous')
+      } else if (section == 1){
+        setSection1('previous projects')
+        setSection2('previous')
+      } else if (section == 2){
+        setSection2('previous contactme')
+        
+      } else if (section == 3){
+
+
+      }
+    }
+  };
   
   useEffect(() => {
+    gsap.registerPlugin(Observer); // Register Observer plugin
 
-    const pin = gsap.fromTo(homeContainer.current, {
-      translateX : 0
-    },{
-      translateX: "-300vw",
-      ease: "none",
-      duration: 10,
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        start: 'top left',
-        end: '4000 top',
-        scrub: true,
-        pin: true
-      }
+    const observer = Observer.create({
+      target: window,
+      type: 'wheel,touch',
+      wheelSpeed: -1,
+      onDown: () => {
+        const currentIndex = Math.floor(-homeContainer.current.getBoundingClientRect().x / window.innerWidth);
+        nextSection(currentIndex);
+      },
+      onUp: () => {
+        const currentIndex = Math.floor(-homeContainer.current.getBoundingClientRect().x / window.innerWidth);
+        previousSection(currentIndex);
+      },
+      tolerance: 200,
+      preventDefault: true,
     });
 
-    return () =>{
-      pin.kill();
-    }
-    
+    return () => {
+      observer.kill(); // Clean up the observer on component unmount
+    };
   }, []);
+  
 
   return ( 
-    <>
-
-    <div ref={ triggerRef } >
       <div className='main_container' ref= { homeContainer } onClick={()=>setClickOut(!clickOut)}>
           
+        <section ref={ (el) => sections.current[0] = el }>
           <NavBar clickOut={ clickOut } handleClickOut={ handleClickOut }/>
-        
+          
           <div className='scrollDown'>
             <span className='span1'>S c r o l l</span>
             <KeyboardDoubleArrowDownIcon sx={{color: "#fff"}} />
@@ -73,19 +119,23 @@ const Container = () => {
                 <Button contactMeContainer={contactMeContainer} title={'Contáctame'} color={'light'} /> 
               </div>       
           </div> 
+        </section>
 
-        <AboutMeScroll triggerRef2={ triggerRef }/>
+        <section className='second_section' ref={ (el) => sections.current[1] = el }>
+            <AboutMeScroll isActive={ section1 } triggerRef2={ triggerRef }/>
+        </section>
              
-        <ProjectsScroll triggerRef3={ triggerRef }/>
+        <section ref={ (el) => sections.current[2] = el }>
+          <ProjectsScroll isActiveProjects={ section2 } triggerRef3={ triggerRef }/>
+        </section>
+
+        <section ref={ (el) => sections.current[3] = el }>
+          <ContactMeScroll ref={contactMeContainer} />
+        </section>
 
 
-
-        <ContactMeScroll ref={contactMeContainer} />
+        
       </div>
-
-   
-    </div>
-    </>
   )
 }
 
