@@ -10,6 +10,10 @@ import { Observer } from "gsap/Observer";
 import { gsap } from "gsap";
 import Button from '../../components/Button/Button';
 
+//Esta al revez el scroll
+//corregir proyectos
+
+
 
 const Container = () => {
   const [clickOut, setClickOut] = useState(true);

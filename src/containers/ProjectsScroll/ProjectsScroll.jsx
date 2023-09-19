@@ -27,7 +27,7 @@ const ProjectsScroll = ({isActiveProjects}) => {
         height: "100%"
       }, 0.2) // 0.2 es el tiempo de separación entre cada animación
       const projectInfoLine = gsap.fromTo(element == '1' ? columns.current[2] : columns2.current[2], {
-        width: "20%",
+        width: "10%",
         gap:0,
       }, {
         width: "150%",
@@ -82,25 +82,6 @@ const ProjectsScroll = ({isActiveProjects}) => {
     };
 
     useEffect(() => {
-      console.log(isActiveProjects)
-
-      // const ProjecsContainerAnimation = gsap.fromTo(ProjetcScrollContainer.current, {
-      //   translateX: isActive === 'previous'
-      //   ? '0px'
-      //   : isActive === 'next'
-      //   ? '0vw'
-      //   : isActive === 'next contactme'
-      //   && '10vw',
-      // }, {
-      //   translateX: isActive === 'next'
-      //   ? '0vw'
-      //   : isActive === 'previous'
-      //   ? '0px'
-      //   : isActive === 'previous projects'
-      //   && '10vw',
-      //   ease: "none",
-      //   duration: 1,
-      // })
 
       const linesAnimation = gsap.fromTo(lines.current, {
         translateX:isActiveProjects == 'next'  && "120vw" || isActiveProjects == 'previous contactme',
@@ -113,22 +94,6 @@ const ProjectsScroll = ({isActiveProjects}) => {
         },
         ease: 'none'
       });
-        
-      // const line1Animation = gsap.fromTo (line1.current,
-      // {
-      //   height: "160%",
-      // },
-      // {
-      //   height: "50%",
-      //   ease: "none",
-      //   duration: 1,
-      //   scrollTrigger: {
-      //     trigger: ProjetcScrollContainer.current,
-      //     start: "top left",
-      //     end: "2000 top",
-      //     scrub: true
-      //   }
-      // });
 
       const lineProjectsAnimation = gsap.fromTo (lineProjects.current,
       {
@@ -139,25 +104,6 @@ const ProjectsScroll = ({isActiveProjects}) => {
         ease: "none",
         duration: 0.5,
       });
-      
-
-      //   const projectsAnimation = gsap.fromTo(projects.current, {
-      //     scale: 0
-      //   },{
-      //    scale:1,
-      //    ease:"none",
-      //     scrollTrigger: {
-      //     trigger: ProjetcScrollContainer.current,
-      //     start: "left+=250%",
-      //     end: "left+=350%",
-      //     scrub: true
-      //     },
-      //     stagger:{
-      //       from: "left",
-      //       amount: 2
-      //     },
-      //     ease: 'none'
-      //   });
   
       return () =>{
         linesAnimation.kill();
