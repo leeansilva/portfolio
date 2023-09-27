@@ -16,40 +16,57 @@ const ProjectsScroll = ({isActiveProjects}) => {
     const projects = useRef([]);
     const columns = useRef([]);
     const columns2 = useRef([]);
+    const info = useRef([]);
     const justPlayInfo = useRef(null);
     const Twitterinfo = useRef(null);
 
+
     const handleHover = (element) => {
-      gsap.killTweensOf(element == '1' ? columns.current : columns2.current );
-      const tl1 = gsap
-      .timeline()
-      .staggerTo(element == '1' ? columns.current : columns2.current , 0.2, {
+      gsap.killTweensOf(element == '1' ? columns.current : columns2.current);
+      
+      const tl1 = gsap.timeline();
+    
+      tl1.staggerTo(element == '1' ? columns.current : columns2.current, 0.2, {
         height: "100%"
-      }, 0.2) // 0.2 es el tiempo de separación entre cada animación
+      }, 0.2); // 0.2 es el tiempo de separación entre cada animación
+    
       const projectInfoLine = gsap.fromTo(element == '1' ? columns.current[2] : columns2.current[2], {
         width: "10%",
-        gap:0,
+        gap: 0,
       }, {
         width: "150%",
         ease: "none",
-        delay:0.8,
         duration: 0.6,
-      })
+      });
+    
       const infoContainer = gsap.fromTo(element == '1' ? Twitterinfo.current : justPlayInfo.current, {
         scale: 0
       }, {
         scale: 1,
         display: 'block',
         ease: "none",
-        delay:1.2,
-        duration: 0.1
-      })
-
-      return () =>{
+        duration: 0.1,
+        onComplete: () => {
+          const infoElements = gsap.fromTo(element == '1' ? [info.current[0], info.current[1], info.current[2]] : [info.current[3], info.current[4], info.current[5]], {
+            scale: 0
+          }, {
+            scale: 1,
+            display: 'block',
+            ease: "none",
+            delay:0.2,
+            duration: 0.1,
+          });
+      
+        }
+      });
+    
+      return () => {
         projectInfoLine.kill();
         infoContainer.kill();
-      }
+        tl1.kill();
+      };
     };
+    
 
     const handleHoverOut = (element) => {
       gsap.killTweensOf(element == '1' ? columns.current : columns2.current );
@@ -74,11 +91,27 @@ const ProjectsScroll = ({isActiveProjects}) => {
         scale: 0,
         ease: "none",
         duration: 0.2,
+        onComplete: ()=>{
+          const infoElements = gsap.fromTo(element == '1' ? [info.current[0], info.current[1], info.current[2]] : [info.current[3], info.current[4], info.current[5]], {
+            scale: 1
+          }, {
+            scale: 0,        
+            display: 'block',
+            ease: "none",
+            delay:0.1,
+            duration: 0.1,
+          })
+        }
       })
+
+     
+
       return () =>{
         projectInfoLine.kill();
         infoContainer.kill();
+        tl1.kill()
       }
+
     };
 
     useEffect(() => {
@@ -95,22 +128,10 @@ const ProjectsScroll = ({isActiveProjects}) => {
         ease: 'none'
       });
 
-      const lineProjectsAnimation = gsap.fromTo (lineProjects.current,
-      {
-        translateX:isActiveProjects == 'next' || isActiveProjects == 'previous contactme' && "50%",
-      },
-      {
-        translateX:isActiveProjects == 'previous' || isActiveProjects == 'next contactme' && "0%",
-        ease: "none",
-        duration: 0.5,
-      });
+    
   
       return () =>{
         linesAnimation.kill();
-        // line1Animation.kill();
-        // ProjecsContainerAnimation.kill();
-        lineProjectsAnimation.kill();
-        // projectsAnimation.kill();
       }
      
     }, [isActiveProjects])
@@ -134,10 +155,10 @@ const ProjectsScroll = ({isActiveProjects}) => {
                         <div ref={ (el) => columns.current[0] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns.current[1] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns.current[2] = el } className="dinamicColumns">
-                          <div ref = { Twitterinfo } className='justPlayInfo'>
-                              <h1>Titulo</h1>
-                              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum magnam tenetur dolorum, dignissimos sequi fugiat i</p>
-                              <a href='hola'>link</a>
+                          <div ref = { Twitterinfo } className='twitterInfo'>
+                              <h1 ref={(el) => info.current[0] = el}>Titulo</h1>
+                              <p ref={(el) => info.current[1] = el}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum magnam tenetur dolorum, dignissimos sequi fugiat i</p>
+                              <a ref={(el) => info.current[2] = el} href='hola'>link</a>
                             </div>
                           </div>
                         <div ref={ (el) => columns.current[3] = el } className="dinamicColumns"></div>
@@ -154,9 +175,9 @@ const ProjectsScroll = ({isActiveProjects}) => {
                         <div ref={ (el) => columns2.current[1] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns2.current[2] = el } className="dinamicColumns">
                           <div ref = { justPlayInfo } className='justPlayInfo'>
-                            <h1>Titulo</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum magnam tenetur dolorum, dignissimos sequi fugiat i</p>
-                            <a href='hola'>link</a>
+                            <h1 ref={(el) => info.current[3]= el}>Titulo</h1>
+                            <p ref={(el) => info.current[4] = el} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum magnam tenetur dolorum, dignissimos sequi fugiat i</p>
+                            <a ref={(el) => info.current[5] = el} href='hola'>link</a>
                           </div>
                         </div>
                         <div ref={ (el) => columns2.current[3] = el } className="dinamicColumns"></div>

@@ -1,146 +1,181 @@
-import React, { useEffect, useRef, useState } from 'react';
-import NavBar from '../../components/NavBar/NavBar';
-import Name from '../../components/Name/Name';
-import AboutMeScroll from '../AboutMeScroll/AboutMeScroll';
-import ProjectsScroll from '../ProjectsScroll/ProjectsScroll';
-import ContactMeScroll from '../ContactMeScroll/ContactMeScroll';
-import './style.css';
-import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import React, { useEffect, useRef, useState } from "react";
+import NavBar from "../../components/NavBar/NavBar";
+import Name from "../../components/Name/Name";
+import AboutMeScroll from "../AboutMeScroll/AboutMeScroll";
+import ProjectsScroll from "../ProjectsScroll/ProjectsScroll";
+import ContactMeScroll from "../ContactMeScroll/ContactMeScroll";
+import "./style.css";
+import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 import { Observer } from "gsap/Observer";
 import { gsap } from "gsap";
-import Button from '../../components/Button/Button';
-
-//Esta al revez el scroll
-//corregir proyectos
-
-
+import Button from "../../components/Button/Button";
 
 const Container = () => {
   const [clickOut, setClickOut] = useState(true);
-
-  const [section0, setSection0] = useState('');
-  const [section1, setSection1] = useState('');
-  const [section2, setSection2] = useState('');
-  const [section3, setSection3] = useState('');
-
+  const [section1, setSection1] = useState("");
+  const [section2, setSection2] = useState("");
+  const [section3, setSection3] = useState("");
   const sections = useRef([]);
   const homeContainer = useRef(null);
-  const triggerRef = useRef(null);
   const contactMeContainer = useRef(null);
-  
-  const handleClickOut = () =>{
+
+  const touchStartY = useRef(null);
+
+  const handleTouchStart = (e) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    if (touchStartY.current !== null) {
+      const deltaY = e.touches[0].clientY - touchStartY.current;
+
+      if (deltaY > 5) {
+        // Deslizamiento hacia abajo
+        previousSection();
+      } else if (deltaY < -5) {
+        // Deslizamiento hacia arriba
+        nextSection();
+      }
+      touchStartY.current = null;
+    }
+  };
+
+  const handleClickOut = () => {
     setClickOut(true);
-  }
+  };
 
-  const nextSection = (currentIndex) => {
+  const nextSection = () => {
+    const currentIndex = Math.floor(
+      -homeContainer.current.getBoundingClientRect().x / window.innerWidth
+    );
+
     if (currentIndex < sections.current.length - 1) {
-      const section = currentIndex + 1
+      const section = currentIndex + 1;
       gsap.to(homeContainer.current, {
-        x: -(section) * window.innerWidth, // Scroll to the next section
+        x: -section * window.innerWidth,
         duration: 0.5,
       });
-      if (section == 1){
-        setSection1('next')
-      } else if (section == 2){
-        setSection1('next projects')
-        setSection2('next')
-      } else if (section == 3){
-        setSection2('next contactme')
+      if (section === 1) {
+        setSection1("next");
+      } else if (section === 2) {
+        setSection1("next projects");
+        setSection2("next");
+      } else if (section === 3) {
+        setSection2("next contactme");
+        setSection3("next");
       }
     }
   };
 
-  const previousSection = (currentIndex) => {
-    if (currentIndex > 0) {
-      const section = currentIndex - 1
+  const previousSection = () => {
+    const currentIndex = Math.floor(
+      -homeContainer.current.getBoundingClientRect().x / window.innerWidth
+    );
+
+    if (currentIndex > 0 && currentIndex <= 4) {
+      const section = currentIndex - 1;
       gsap.to(homeContainer.current, {
-        x: -(section) * window.innerWidth, // Scroll to the previous section
+        x: -section * window.innerWidth,
         duration: 0.5,
       });
-      if(section == 0){
-        setSection1('previous')
-      } else if (section == 1){
-        setSection1('previous projects')
-        setSection2('previous')
-      } else if (section == 2){
-        setSection2('previous contactme')
-        
-      } else if (section == 3){
-
-
+      if (section === 0) {
+        setSection1("previous");
+      } else if (section === 1) {
+        setSection1("previous projects");
+        setSection2("previous");
+      } else if (section === 2) {
+        setSection2("previous contactme");
+        setSection3("previous");
       }
     }
   };
-  
+
   useEffect(() => {
-    gsap.registerPlugin(Observer); // Register Observer plugin
+    gsap.registerPlugin(Observer);
 
     const observer = Observer.create({
       target: window,
-      type: 'wheel,touch',
-      wheelSpeed: -1,
-      onDown: () => {
-        const currentIndex = Math.floor(-homeContainer.current.getBoundingClientRect().x / window.innerWidth);
-        nextSection(currentIndex);
-      },
-      onUp: () => {
-        const currentIndex = Math.floor(-homeContainer.current.getBoundingClientRect().x / window.innerWidth);
-        previousSection(currentIndex);
+      type: "wheel",
+      wheelSpeed: 0.5,
+      onWheel: (e) => {
+        const currentIndex = Math.floor(
+          -homeContainer.current.getBoundingClientRect().x / window.innerWidth
+        );
+        if (e.deltaY > 0) {
+          // Desplazamiento hacia abajo
+          previousSection();
+        } else {
+          // Desplazamiento hacia arriba
+          nextSection();
+        }
       },
       tolerance: 200,
       preventDefault: true,
     });
 
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+
     return () => {
-      observer.kill(); // Clean up the observer on component unmount
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      observer.kill();
     };
   }, []);
-  
 
-  return ( 
-      <div className='main_container' ref= { homeContainer } onClick={()=>setClickOut(!clickOut)}>
-          
-        <section ref={ (el) => sections.current[0] = el }>
-          <NavBar clickOut={ clickOut } handleClickOut={ handleClickOut }/>
-          
-          <div className='scrollDown'>
-            <span className='span1'>S c r o l l</span>
-            <KeyboardDoubleArrowDownIcon sx={{color: "#fff"}} />
+  return (
+    <div
+      className="main_container"
+      ref={homeContainer}
+      onClick={() => setClickOut(!clickOut)}
+    >
+      <section ref={(el) => (sections.current[0] = el)}>
+        <NavBar clickOut={clickOut} handleClickOut={handleClickOut} />
+
+        <div className="scrollDown">
+          <span className="span1">S c r o l l</span>
+          <KeyboardDoubleArrowDownIcon sx={{ color: "#fff" }} />
+        </div>
+        <div className="scrollDown__black">
+          <span className="span2">S c r o l l</span>
+          <KeyboardDoubleArrowDownIcon sx={{ color: "#000" }} />
+        </div>
+
+        <div className="home_about_container">
+          <div className="home__Name_container">
+            <h1 className="Name_container_text">Hola, soy</h1>
+            <Name fontSize={"90px"} color={"white"} text="Leandro Silva," />
+            <Name fontSize={"60px"} color={"white"} text="desarrollador web." />
+            <h1 className="Name_container_text2">
+              Apasionado por crear experiencias digitales excepcionales.
+            </h1>
           </div>
-          <div className='scrollDown__black'>
-            <span className='span2'>S c r o l l</span>
-            <KeyboardDoubleArrowDownIcon sx={{color: "#000"}} />
+          <div onClick={nextSection} className="button__container">
+            <Button
+              contactMeContainer={contactMeContainer}
+              title={"Contáctame"}
+              color={"light"}
+            />
           </div>
+        </div>
+      </section>
 
-          <div className='home_about_container' >
-              <div className='home__Name_container'>
-                <h1 className='Name_container_text'>Hola, soy</h1>
-                  <Name fontSize={"90px"} color={"white"} text="Leandro Silva,"/>
-                  <Name fontSize={"60px"} color={"white"} text="desarrollador web." />
-                <h1 className='Name_container_text2'>Apasionado por crear experiencias digitales excepcionales.</h1>
-              </div>
-              <div className='button__container'>
-                <Button contactMeContainer={contactMeContainer} title={'Contáctame'} color={'light'} /> 
-              </div>       
-          </div> 
-        </section>
+      <section
+        className="second_section"
+        ref={(el) => (sections.current[1] = el)}
+      >
+        <AboutMeScroll isActive={section1} />
+      </section>
 
-        <section className='second_section' ref={ (el) => sections.current[1] = el }>
-            <AboutMeScroll isActive={ section1 } triggerRef2={ triggerRef }/>
-        </section>
-             
-        <section ref={ (el) => sections.current[2] = el }>
-          <ProjectsScroll isActiveProjects={ section2 } triggerRef3={ triggerRef }/>
-        </section>
+      <section ref={(el) => (sections.current[2] = el)}>
+        <ProjectsScroll isActiveProjects={section2} />
+      </section>
 
-        <section ref={ (el) => sections.current[3] = el }>
-          <ContactMeScroll ref={contactMeContainer} />
-        </section>
+      <section ref={(el) => (sections.current[3] = el)}>
+        <ContactMeScroll isActive={section3} />
+      </section>
+    </div>
+  );
+};
 
-
-        
-      </div>
-  )
-}
-
-export default Container
+export default Container;

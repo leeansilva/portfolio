@@ -61,17 +61,13 @@
     padding-bottom: 60px;
 }
 
-.Cline2{
-    height: 700px;
-}
-
 
 .form{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
-    height: 30%;
+    height: auto;
     justify-content: center;
     align-items: center;
     gap: 15px;
@@ -122,3 +118,19 @@
 .Cline7 p{
     font-size: 20px;
 }
+
+@media (max-width: 1599px) {
+    .form input{
+        font-size: 25px;
+    }
+    .inputMessage{
+        width: 75%;
+    }
+    .inputMail{
+        width: 75%;
+    }
+
+    .inputName{
+        width: 75%;
+    }
+  }

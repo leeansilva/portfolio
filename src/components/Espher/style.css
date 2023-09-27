@@ -23,3 +23,23 @@
     background-color: #000000;
     cursor: pointer;
 }
+
+@media (max-width: 1920px) {
+    .esferita{
+        top: -180px;
+        left: 250px;
+    }
+}
+
+@media (max-width: 1535px) {
+    .esferita{
+        left: 250px;
+        top: -50px;
+    }
+}
+@media (max-width: 1200px) {
+    .esferita{
+        display: none;
+    }
+}
+

@@ -1,8 +1,7 @@
 .circle{
     height: 24px;
     width: 24px;
-    border-radius: 24px;
-    background-color: azure;
+    border-radius: 24px;   
     position: fixed;
     top: 0;
     left: 0;

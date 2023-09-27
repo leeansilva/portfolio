@@ -125,3 +125,15 @@ section:nth-child(3){
 section:nth-child(4){
     background-color: greenyellow;
 }
+
+@media (max-width: 950px) {
+    .home__Name_container{
+        margin-left: 50px;
+    }
+}
+@media (max-width: 800px) {
+    .home__Name_container{
+       font-size: 10px;
+       margin-left: 10px;
+    }
+}

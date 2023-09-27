@@ -4,8 +4,6 @@ import './style.css';
 function MouseTrail() {
   useEffect(() => {
 
-    /////////////////////
-    
     const circles = document.querySelectorAll('.circle');
     const coords = {
       x: 0,
@@ -16,7 +14,8 @@ function MouseTrail() {
       circle.x = 0;
       circle.y = 0;
     });
-    /////////////////////
+
+  
 
     const animatedCircles = () => {
       let x = coords.x;
@@ -27,6 +26,8 @@ function MouseTrail() {
         circle.style.top = circle.y - 12 + "px";
 
         circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+        circle.style.backgroundColor = `#${Math.round(Math.random(100,900)*1000)}`
+     
 
         circle.x = x;
         circle.y = y;
@@ -48,20 +49,18 @@ function MouseTrail() {
     requestAnimationFrame(animatedCircles);
 }, [])
 
-     
-
   return (
     <>
-      <div className="circle"></div>
-      <div className="circle"></div>
-      <div className="circle"></div>
-      <div className="circle"></div>
-      <div className="circle"></div>
-      <div className="circle"></div>
-      <div className="circle"></div>
-      <div className="circle"></div>
-      <div className="circle"></div>
-      <div className="circle"></div>
+      <div  className="circle"></div>
+      <div  className="circle"></div>
+      <div  className="circle"></div>
+      <div  className="circle"></div>
+      <div  className="circle"></div>
+      <div  className="circle"></div>
+      <div  className="circle"></div>
+      <div  className="circle"></div>
+      <div  className="circle"></div>
+      <div  className="circle"></div>
     </>
   );
 }

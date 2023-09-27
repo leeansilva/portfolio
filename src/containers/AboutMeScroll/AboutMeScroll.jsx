@@ -1,17 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Observer } from "gsap/Observer";
 import Espher from '../../components/Espher/Espher';
 import './style.css';
 import Name from '../../components/Name/Name';
 import Button from '../../components/Button/Button';
-import { AssignmentReturnTwoTone } from '@mui/icons-material';
 
-
-//posiblemente para projects, darle un position absolute a las lineas, y moverlas desde -100vw hasta 0px
-
-const AboutMeScroll = ( { triggerRef2, isActive } ) => {
+const AboutMeScroll = ( { isActive } ) => {
     const AboutMeContainer = useRef(null);
     const line1 = useRef(null);
     const line2 = useRef(null);
@@ -24,8 +18,6 @@ const AboutMeScroll = ( { triggerRef2, isActive } ) => {
     const espherRef = useRef(null);
     const textRef = useRef([]);
 
-
-    
     useEffect(() => {
 
           const aboutMeContainerAnimation = gsap.fromTo(AboutMeContainer.current, {
@@ -86,11 +78,9 @@ const AboutMeScroll = ( { triggerRef2, isActive } ) => {
             width:'600px',
             ease: 'none'
           } );
-
           const nameAnimation = createAnimationContent(nameRef,isActive == 'next' || isActive == 'previous projects' ? 1: 0, "100px","0px" );
           const espherAnimation = createAnimationContent(espherRef,isActive == 'next' || isActive == 'previous projects' ? 1: 0,"20px","0px");
 
-        
           const line1Animation = createLineAnimation(line1,isActive == 'next'? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',isActive == 'next' ? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',0,0);
           const line2Animation = createLineAnimation(line2,isActive == 'next'? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',isActive == 'next' ? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',0, isActive === 'next' || isActive == 'previous projects' ? "-20px" : isActive === 'previous' && '0');
           const line3Animation = createLineAnimation(line3,isActive == 'next'? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',isActive == 'next' ? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',0, isActive === 'next' || isActive == 'previous projects' ? "-20px" : isActive === 'previous' && '0');
@@ -98,10 +88,6 @@ const AboutMeScroll = ( { triggerRef2, isActive } ) => {
           const line5Animation = createLineAnimation(line5,isActive == 'next'? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',isActive == 'next' ? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',0, isActive === 'next' || isActive == 'previous projects' ? "80px" : isActive === 'previous' && '0');
           const line6Animation = createLineAnimation(line6,isActive == 'next'? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',isActive == 'next' ? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',0, isActive === 'next' || isActive == 'previous projects' ? "180px" : isActive === 'previous' && '0');
           const line7Animation = createLineAnimation(line7,isActive == 'next'? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',isActive == 'next' ? "20%" : isActive == 'previous' || isActive == 'previous projects' && '-20%',0, isActive === 'next' || isActive == 'previous projects' ? "300px" : isActive === 'previous' && '0');
-
-        
-
-        
     
         return () =>{
 
@@ -113,28 +99,12 @@ const AboutMeScroll = ( { triggerRef2, isActive } ) => {
            line5Animation.kill();
            line6Animation.kill();
            line7Animation.kill();
-
           nameAnimation.kill();
           espherAnimation.kill();
           animationText.kill();
         }
         
       }, [isActive]);
-
-
-    // useEffect(() => {
-    //   const observer = Observer.create({
-    //     target: AboutMeContainer.current,
-    //     onEnter: () => {
-    //       console.log('hola')
-    //     },
-    //     preventDefault: true,
-    //   });
-  
-    //   return () => {
-    //     observer.kill();
-    //   };
-    // }, []);
 
   return (
     <div className='sections aboutMe_container' ref={ AboutMeContainer }  >    

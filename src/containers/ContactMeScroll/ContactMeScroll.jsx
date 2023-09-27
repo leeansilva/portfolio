@@ -1,14 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import emailjs from '@emailjs/browser';
 import './style.css';
 import Name from '../../components/Name/Name';
 
-
-gsap.registerPlugin(ScrollTrigger);
-
-const ContactMeScroll = () => {
+const ContactMeScroll = ({isActive}) => {
   const contactMeContainer = useRef(null);
   const rectangulo = useRef(null);
   const lines = useRef([]);
@@ -29,106 +25,21 @@ const ContactMeScroll = () => {
     const RectanguloAnimation = gsap.fromTo(
       rectangulo.current,
       {
-        width: "100%",
-        right: "100vw",
+        width: isActive == 'next' && "50%",
+        right:isActive == 'next' && '100%',
       },
       {
-        width: '15%',
-        right: 0,
-        duration: 1,
+        width: isActive == 'next' && '15%',
+        right: isActive == 'next' && 0 ,
+        duration: 0.5,
         ease: "none",
-        scrollTrigger: {
-          trigger: contactMeContainer.current,
-          start: "left+=10%",
-          end: "left+=400%",
-          scrub: true,
-        },
       }
     );
-
-    const createAnimationContent = gsap.fromTo(
-        form.current,{
-          opacity: 0,
-         
-        },{
-          opacity: 1,
-         
-          ease:'none',
-          duration: 1,
-          scrollTrigger: {
-            trigger: contactMeContainer.current,
-            start:  "left+=390%",
-            end: "left+=400%",
-            scrub: true,
-          }
-        }
-      )
-    
-
-    const linesAnimation = gsap.fromTo(lines.current, {
-      height: "50%",
-      translateX: "100vw",
-      marginBottom: "100px",
-      
-    },{
-      translateX: "0px",
-      marginBottom:'0px',
-      height: "20%",
-      duration: 2,
-      scrollTrigger: {
-        trigger: contactMeContainer.current,
-        start: "left+=360%",
-        end: "left+=400%",  
-        scrub: true,
-      },
-      stagger:{
-        from: "left",
-        amount: 2
-      },
-      ease: 'none'
-    } );
-
-    const line1Animation = gsap.fromTo (lines.current[0],
-      {
-        height: "20%",
-      },
-      {
-        height: "30%",
-        ease: "none",
-        duration: 1,
-        scrollTrigger: {
-          trigger: contactMeContainer.current,
-          start: "left+=135%",
-          end: "520% top",
-          scrub: true
-        }
-      });
-
-      const line2Animation = gsap.fromTo (lines.current[1],
-        {
-          height: "20%",
-        },
-        {
-          height: "100%",
-          ease: "none",
-          duration: 1,
-          scrollTrigger: {
-            trigger: contactMeContainer.current,
-            start: "left+=135%",
-            end: "520% top",
-            scrub: true
-          }
-        });
-
     return () =>{
       RectanguloAnimation.kill();
-      linesAnimation.kill();
-      line1Animation.kill();
-      line2Animation.kill();
-      createAnimationContent.kill();
     }
 
-  }, []);
+  }, [isActive]);
 
   const handleHover = (e) => {
     gsap.killTweensOf(e.target);

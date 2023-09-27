@@ -3,11 +3,12 @@
 html,
 body,
 *{
-  font-family: 'EB Garamond', serif;
+    font-family: 'EB Garamond', serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    overflow: hidden;
     -ms-overflow-style: none;
 }
 
@@ -16,9 +17,6 @@ body{
 }
 
 #root {
-    width: 98.7vw;
- 
-    height: 100svh;
     box-sizing: border-box;
     background-color: #15cb24;
   }
