@@ -8,12 +8,15 @@ body,
     margin: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    overflow: hidden;
     -ms-overflow-style: none;
 }
 
 body{
   background-color: #0000;
+}
+
+html,body{
+  overflow: hidden;
 }
 
 #root {

@@ -92,3 +92,18 @@
 }
 
 /* /////////////////////////////////////////////////////////////////////// */
+
+@media (max-width: 950px) {
+    
+}
+@media (max-width: 800px) {
+    .flexBlocks_line{
+        width: 120%;
+        height: 20%;
+        position: relative;
+        background-color: #fff;
+    }
+
+
+
+}

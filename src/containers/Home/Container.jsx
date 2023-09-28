@@ -5,7 +5,6 @@ import AboutMeScroll from "../AboutMeScroll/AboutMeScroll";
 import ProjectsScroll from "../ProjectsScroll/ProjectsScroll";
 import ContactMeScroll from "../ContactMeScroll/ContactMeScroll";
 import "./style.css";
-import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 import { Observer } from "gsap/Observer";
 import { gsap } from "gsap";
 import Button from "../../components/Button/Button";
@@ -44,8 +43,9 @@ const Container = () => {
     setClickOut(true);
   };
 
-  const nextSection = () => {
-    const currentIndex = Math.floor(
+  const nextSection = (index) => {
+    let currentIndex
+    index != undefined ?  currentIndex = index :  currentIndex = Math.floor(
       -homeContainer.current.getBoundingClientRect().x / window.innerWidth
     );
 
@@ -132,25 +132,22 @@ const Container = () => {
       <section ref={(el) => (sections.current[0] = el)}>
         <NavBar clickOut={clickOut} handleClickOut={handleClickOut} />
 
-        <div className="scrollDown">
-          <span className="span1">S c r o l l</span>
-          <KeyboardDoubleArrowDownIcon sx={{ color: "#fff" }} />
-        </div>
-        <div className="scrollDown__black">
-          <span className="span2">S c r o l l</span>
-          <KeyboardDoubleArrowDownIcon sx={{ color: "#000" }} />
-        </div>
-
         <div className="home_about_container">
           <div className="home__Name_container">
             <h1 className="Name_container_text">Hola, soy</h1>
-            <Name fontSize={"90px"} color={"white"} text="Leandro Silva," />
-            <Name fontSize={"60px"} color={"white"} text="desarrollador web." />
+            <div className="name_flex">
+              <Name fontSize={"90px"} color={"white"} text="Leandro" />
+              <Name fontSize={"90px"} color={"white"} text="Silva," />
+            </div>
+            <div className="developer_flex">
+              <Name fontSize={"60px"} color={"white"} text="desarrollador " />
+              <Name fontSize={"60px"} color={"white"} text="web. " />
+            </div>
             <h1 className="Name_container_text2">
               Apasionado por crear experiencias digitales excepcionales.
             </h1>
           </div>
-          <div onClick={nextSection} className="button__container">
+          <div onClick={() => nextSection(2)} className="button__container">
             <Button
               contactMeContainer={contactMeContainer}
               title={"Contáctame"}

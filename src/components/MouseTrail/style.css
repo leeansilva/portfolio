@@ -8,4 +8,10 @@
     mix-blend-mode: difference; 
     z-index: 10;
     pointer-events: none;
+    opacity: 1; /* Inicialmente, los divs son visibles */
 }
+
+.visible {
+    transition: opacity 5s ease; /* Transición de opacidad suave */
+    opacity:0 /* Cuando no hay movimiento, los divs desaparecen */
+  }

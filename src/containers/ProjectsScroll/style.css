@@ -1,7 +1,7 @@
 .projects_container {
     position: fixed;
     left: 200vw;
-    height: 100vh;
+    height: 100svh;
     width: 100vw;
     background-color: none;
     display: flex;
@@ -110,4 +110,25 @@
 .twitterInfo a,
 .justPlayInfo a {
   scale: 0;
+}
+
+@media (max-width: 950px) {
+    .row__projects {
+    display: flex;
+    flex-direction: column !important;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 10px;
+}
+
+.project1 {
+    border-radius: 2px;
+    width: 100%;
+}
+    
+
+}
+@media (max-width: 800px) {
+
+
 }
