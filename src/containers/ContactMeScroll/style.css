@@ -121,29 +121,18 @@
 }
 
 @media (max-width: 1599px) {
-    .form{
-        top: 15%;
-    }
     .form input{
         font-size: 25px;
     }
     .inputMessage{
-        width: 85%;
-        height: 100px;
-        text-align: center;
+        width: 75%;
     }
     .inputMail{
-        width: 85%;
-        height: 50px;
+        width: 75%;
     }
 
     .inputName{
-        width: 85%;
-        height: 50px;
-    }
-
-    .form button{
-        width: 85%;
+        width: 75%;
     }
   }
 
@@ -180,6 +169,31 @@
 
     .rectangulo{
         display: none;
+    }
+
+    .form{
+        top: 15%;
+    }
+    .form input{
+        font-size: 25px;
+    }
+    .inputMessage{
+        width: 85%;
+        height: 100px;
+        text-align: center;
+    }
+    .inputMail{
+        width: 85%;
+        height: 50px;
+    }
+
+    .inputName{
+        width: 85%;
+        height: 50px;
+    }
+
+    .form button{
+        width: 85%;
     }
 
   }
