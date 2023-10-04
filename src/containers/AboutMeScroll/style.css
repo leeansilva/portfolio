@@ -1,5 +1,4 @@
-
-.aboutMe_container{
+.aboutMe_container {
     width: 100svw;
     position: fixed;
     left: 85vw;
@@ -7,14 +6,14 @@
     flex-direction: column;
 }
 
-.flexBlocks_line{
+.flexBlocks_line {
     width: 120%;
     height: 20%;
     position: relative;
     background-color: #fff;
 }
 
-.line1{
+.line1 {
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -24,7 +23,7 @@
 
 
 
-.line2{
+.line2 {
     left: 50px;
     display: flex;
     flex-direction: row;
@@ -33,8 +32,8 @@
     align-items: center;
 }
 
-.line3{
-    left:100px;
+.line3 {
+    left: 100px;
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -42,8 +41,8 @@
     align-items: center;
 }
 
-.line4{
-    left:150px;
+.line4 {
+    left: 150px;
     width: 110%;
     display: flex;
     flex-direction: row;
@@ -52,8 +51,8 @@
     align-items: center;
 }
 
-.line5{
-    left:100px;
+.line5 {
+    left: 100px;
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -61,7 +60,7 @@
     align-items: center;
 }
 
-.line6{
+.line6 {
     left: 50px;
     display: flex;
     flex-direction: row;
@@ -70,7 +69,7 @@
     align-items: center;
 }
 
-.line7{
+.line7 {
     left: 0px;
     display: flex;
     flex-direction: row;
@@ -78,20 +77,20 @@
     align-items: center;
 }
 
-.aboutMe_text{
+.aboutMe_text {
     font-size: 18px;
     position: relative;
     color: #000;
     width: 700px;
 }
 
-.espher_container{
+.espher_container {
     position: absolute;
     top: 26%;
     left: 60%;
 }
 
-.button_container{
+.button_container {
     width: 150px;
     position: absolute;
     left: 50vh;
@@ -100,34 +99,39 @@
 /* /////////////////////////////////////////////////////////////////////// */
 
 @media (max-width: 950px) {
-    .line1 , .line2, .line3, .line4, .line5, .line6 , .line7{
+    .line1, .line2, .line3, .line4, .line5, .line6, .line7 {
         left: 0;
         width: 70%;
         margin: 0;
         padding-left: 15px;
         padding-bottom: 10px;
     }
-    .flexBlocks_line{
+
+    .flexBlocks_line {
         width: 100% !important;
         position: relative;
         flex: 1;
     }
-    .aboutMe_container{
+
+    .aboutMe_container {
         left: 100vw;
         height: 100svh !important;
     }
-    .line1{
+
+    .line1 {
         flex: 0;
         padding-bottom: 20px;
     }
-    .line2{
+
+    .line2 {
         flex: 0
     }
 
-    .button_container{
+    .button_container {
         left: 50%;
-        transform: translateX(-50%); /* Centra horizontalmente */
+        transform: translateX(-50%);
+        /* Centra horizontalmente */
     }
- 
-    
+
+
 }

@@ -1,4 +1,4 @@
-.contact_container{
+.contact_container {
     position: fixed;
     left: 300vw;
     height: 100svh !important;
@@ -16,7 +16,7 @@
     z-index: 20000;
 }
 
-.CflexBlocks_line{
+.CflexBlocks_line {
     width: 100%;
     height: 20%;
     position: relative;
@@ -25,7 +25,7 @@
 
 }
 
-.flexCuerdas{
+.flexCuerdas {
     width: 10%;
     height: 100%;
     position: absolute;
@@ -40,14 +40,14 @@
     padding-right: 1.5%;
 }
 
-.chord{
+.chord {
     height: 100%;
-    cursor:no-drop;
+    cursor: no-drop;
     background-color: #000;
     width: 5px;
 }
 
-.title_container{
+.title_container {
     position: absolute;
     top: 15%;
     left: 0;
@@ -63,7 +63,7 @@
 }
 
 
-.form{
+.form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -79,28 +79,30 @@
     left: 100px;
 }
 
-.form input{
-    
+.form input {
+
     font-size: 30px;
     padding-left: 10px;
     border: 2px solid #000;
 }
 
-.inputName{
-    height: 80px;
-    width: 400px;     
-}
-.inputMail{
+.inputName {
     height: 80px;
     width: 400px;
 }
-.inputMessage{
+
+.inputMail {
+    height: 80px;
+    width: 400px;
+}
+
+.inputMessage {
     width: 87.5%;
     height: 200px;
     text-align: center
 }
 
-.form button{
+.form button {
     width: 200px;
     height: 40px;
     font-size: 20px;
@@ -110,40 +112,44 @@
 
 }
 
-.Cline7{
+.Cline7 {
     display: flex;
     flex-direction: column;
-    justify-content:flex-end
+    justify-content: flex-end
 }
 
-.Cline7 p{
+.Cline7 p {
     font-size: 20px;
 }
 
 @media (max-width: 1599px) {
-    .form input{
+    .form input {
         font-size: 25px;
     }
-    .inputMessage{
-        width: 75%;
-    }
-    .inputMail{
+
+    .inputMessage {
         width: 75%;
     }
 
-    .inputName{
+    .inputMail {
         width: 75%;
     }
-  }
 
-  @media (min-width: 950px){
-    footer{
+    .inputName {
+        width: 75%;
+    }
+}
+
+@media (min-width: 950px) {
+    footer {
         display: none
-    };
-  }
+    }
 
-  @media (max-width: 950px) {
-    .title_container{
+    ;
+}
+
+@media (max-width: 950px) {
+    .title_container {
         top: 0;
         border-bottom: none;
         left: 15px;
@@ -152,7 +158,7 @@
         align-items: normal;
     }
 
-    .flexCuerdas{
+    .flexCuerdas {
         display: none;
     }
 
@@ -160,45 +166,48 @@
         display: none;
     }
 
-    .form{
+    .form {
         width: 100%;
         left: 0;
         padding-left: 0;
         justify-content: center;
     }
 
-    .rectangulo{
+    .rectangulo {
         display: none;
     }
 
-    .form{
+    .form {
         top: 15%;
     }
-    .form input{
+
+    .form input {
         font-size: 25px;
     }
-    .inputMessage{
+
+    .inputMessage {
         width: 85%;
         height: 100px;
         text-align: center;
     }
-    .inputMail{
+
+    .inputMail {
         width: 85%;
         height: 50px;
     }
 
-    .inputName{
+    .inputName {
         width: 85%;
         height: 50px;
     }
 
-    .form button{
+    .form button {
         width: 85%;
     }
 
-  }
+}
 
-  footer{
+footer {
     background-color: #000;
     color: #ffffff;
-  }
+}
