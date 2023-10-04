@@ -113,6 +113,13 @@ const ContactMeScroll = ({isActive}) => {
         <div ref={ (el) => chords.current[4] = el } onMouseEnter={ handleHover } className="chord5 chord"></div>
         <div ref={ (el) => chords.current[5] = el } onMouseEnter={ handleHover } className="chord6 chord"></div>
       </div>
+
+      <footer>
+        <div>
+         asdsa
+        </div>
+        <p>Desing & Built by Leandro Silva.</p>
+      </footer>
     </div>
   )
 }

@@ -3,7 +3,6 @@ import { TagCloud } from "@frank-mayer/react-tag-cloud";
 import './style.css'
 
 const Espher = () => {
-  console.log(window.innerWidth)
   return (
     <TagCloud
         className='esferita'

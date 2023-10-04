@@ -104,7 +104,8 @@
         left: 0;
         width: 70%;
         margin: 0;
-        padding-left: 5px;
+        padding-left: 15px;
+        padding-bottom: 10px;
     }
     .flexBlocks_line{
         width: 100% !important;
@@ -115,12 +116,14 @@
         left: 100vw;
         height: 100svh !important;
     }
+    .line1{
+        flex: 0;
+        padding-bottom: 20px;
+    }
     .line2{
         flex: 0
     }
-    .line2{
-        height: 20%;
-    }
+
     .button_container{
         left: 50%;
         transform: translateX(-50%); /* Centra horizontalmente */

@@ -121,23 +121,53 @@
 }
 
 @media (max-width: 1599px) {
+    .form{
+        top: 15%;
+    }
     .form input{
         font-size: 25px;
     }
     .inputMessage{
-        width: 75%;
+        width: 85%;
+        height: 100px;
+        text-align: center;
     }
     .inputMail{
-        width: 75%;
+        width: 85%;
+        height: 50px;
     }
 
     .inputName{
-        width: 75%;
+        width: 85%;
+        height: 50px;
+    }
+
+    .form button{
+        width: 85%;
     }
   }
 
+  @media (min-width: 950px){
+    footer{
+        display: none
+    };
+  }
+
   @media (max-width: 950px) {
+    .title_container{
+        top: 0;
+        border-bottom: none;
+        left: 15px;
+        padding: 0;
+        padding-top: 0;
+        align-items: normal;
+    }
+
     .flexCuerdas{
+        display: none;
+    }
+
+    .Cline7 p {
         display: none;
     }
 
@@ -152,4 +182,9 @@
         display: none;
     }
 
+  }
+
+  footer{
+    background-color: #000;
+    color: #ffffff;
   }
