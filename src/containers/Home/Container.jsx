@@ -18,24 +18,24 @@ const Container = () => {
   const homeContainer = useRef(null);
   const contactMeContainer = useRef(null);
 
-  const touchStartY = useRef(null);
+  const touchStartX = useRef(null);
 
   const handleTouchStart = (e) => {
-    touchStartY.current = e.touches[0].clientY;
+    touchStartX.current = e.touches[0].clientX;
   };
 
   const handleTouchMove = (e) => {
-    if (touchStartY.current !== null) {
-      const deltaY = e.touches[0].clientY - touchStartY.current;
+    if (touchStartX.current !== null) {
+      const deltaX = e.touches[0].clientX - touchStartX.current;
 
-      if (deltaY > 5) {
-        // Deslizamiento hacia abajo
+      if (deltaX > 5) {
+        // Deslizamiento hacia la derecha (aumenta la cantidad de 50 si es necesario)
         previousSection();
-      } else if (deltaY < -5) {
-        // Deslizamiento hacia arriba
+      } else if (deltaX < -5) {
+        // Deslizamiento hacia la izquierda (disminuye la cantidad de -50 si es necesario)
         nextSection();
       }
-      touchStartY.current = null;
+      touchStartX.current = null;
     }
   };
 

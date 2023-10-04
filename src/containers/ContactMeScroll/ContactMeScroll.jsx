@@ -22,6 +22,10 @@ const ContactMeScroll = ({isActive}) => {
 
   useEffect(() => {
 
+    const windowWidth = window.innerWidth
+
+    if(windowWidth > 950) {
+
     const RectanguloAnimation = gsap.fromTo(
       rectangulo.current,
       {
@@ -38,6 +42,7 @@ const ContactMeScroll = ({isActive}) => {
     return () =>{
       RectanguloAnimation.kill();
     }
+  }
 
   }, [isActive]);
 

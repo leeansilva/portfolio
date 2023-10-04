@@ -35,6 +35,7 @@
   .char {
     font-size: 50px !important;
   }
+
 }
 
 @media (max-width: 700px) {
@@ -43,6 +44,10 @@
   }
 
   .char {
-    font-size: 30px !important;
+    font-size: 45px !important;
+  }
+
+  .Name-word {
+    gap: 6px;
   }
 }

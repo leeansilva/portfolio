@@ -121,14 +121,16 @@
     gap: 10px;
 }
 
+.projects_container{
+    height: 100svh !important;
+}
+
+
+
 .project1 {
     border-radius: 2px;
     width: 100%;
 }
     
-
-}
-@media (max-width: 800px) {
-
 
 }

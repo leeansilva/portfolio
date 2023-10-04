@@ -1,6 +1,7 @@
 .contact_container{
     position: fixed;
     left: 300vw;
+    height: 100svh !important;
     display: flex;
     background-color: none;
     flex-direction: column;
@@ -133,4 +134,22 @@
     .inputName{
         width: 75%;
     }
+  }
+
+  @media (max-width: 950px) {
+    .flexCuerdas{
+        display: none;
+    }
+
+    .form{
+        width: 100%;
+        left: 0;
+        padding-left: 0;
+        justify-content: center;
+    }
+
+    .rectangulo{
+        display: none;
+    }
+
   }

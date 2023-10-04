@@ -15,3 +15,10 @@
     transition: opacity 5s ease; /* Transición de opacidad suave */
     opacity:0 /* Cuando no hay movimiento, los divs desaparecen */
   }
+
+  @media (max-width: 950px) {
+    .circle{
+        display: none;
+        
+    }
+}

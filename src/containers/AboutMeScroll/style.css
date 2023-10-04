@@ -1,6 +1,6 @@
 
 .aboutMe_container{
-    width: 100vw;
+    width: 100svw;
     position: fixed;
     left: 85vw;
     display: flex;
@@ -91,19 +91,40 @@
     left: 60%;
 }
 
+.button_container{
+    width: 150px;
+    position: absolute;
+    left: 50vh;
+}
+
 /* /////////////////////////////////////////////////////////////////////// */
 
 @media (max-width: 950px) {
-    
-}
-@media (max-width: 800px) {
-    .flexBlocks_line{
-        width: 120%;
-        height: 20%;
-        position: relative;
-        background-color: #fff;
+    .line1 , .line2, .line3, .line4, .line5, .line6 , .line7{
+        left: 0;
+        width: 70%;
+        margin: 0;
+        padding-left: 5px;
     }
-
-
-
+    .flexBlocks_line{
+        width: 100% !important;
+        position: relative;
+        flex: 1;
+    }
+    .aboutMe_container{
+        left: 100vw;
+        height: 100svh !important;
+    }
+    .line2{
+        flex: 0
+    }
+    .line2{
+        height: 20%;
+    }
+    .button_container{
+        left: 50%;
+        transform: translateX(-50%); /* Centra horizontalmente */
+    }
+ 
+    
 }

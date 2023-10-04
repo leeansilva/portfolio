@@ -2,7 +2,7 @@
 
 .main_container{
     position: relative;
-    height: 100vh;
+    height: 100svh !important;
     width: 400vw;
     background-color: #000;     
     display: flex;
@@ -69,7 +69,7 @@
     color: #dcdcdc;
     letter-spacing: 3px;
     font-weight: 300;
-    margin-bottom: -10px;
+    margin-bottom: -10px;   
 }
 
 .home_h2{
@@ -139,24 +139,28 @@ section:nth-child(4){
 @media (max-width: 950px) {
     .home__Name_container{
         margin-left: 50px;
-        margin-top: 200px;
+        margin-top: 100px;
         gap: 30px;
     }
     .name_flex{
         gap: 0;
        flex-direction: column;
-    
     }
-    
+    .button__container{
+        width: 150px;
+        margin: 132px auto;
+        
+    }
     .developer_flex{
         flex-direction: column;
         gap: 0;
     }
+
 }
 @media (max-width: 800px) {
     .home__Name_container{
        font-size: 10px;
        margin-left: 20px;
-       margin-top: 200px;
+       margin-top: 100px;
     }
 }

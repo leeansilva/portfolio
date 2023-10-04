@@ -115,6 +115,9 @@ const ProjectsScroll = ({isActiveProjects}) => {
     };
 
     useEffect(() => {
+      const windowWidth = window.innerWidth
+
+      if(windowWidth > 950) {
 
       const linesAnimation = gsap.fromTo(lines.current, {
         translateX:isActiveProjects == 'next'  && "120vw" || isActiveProjects == 'previous contactme',
@@ -127,12 +130,11 @@ const ProjectsScroll = ({isActiveProjects}) => {
         },
         ease: 'none'
       });
-
-    
-  
+      
       return () =>{
         linesAnimation.kill();
       }
+    }
      
     }, [isActiveProjects])
     
