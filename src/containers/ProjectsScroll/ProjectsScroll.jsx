@@ -53,7 +53,7 @@ const ProjectsScroll = ({isActiveProjects}) => {
             scale: 1,
             display: 'block',
             ease: "none",
-            delay:0.2,
+            delay:0.5,
             duration: 0.1,
           });
       
@@ -158,9 +158,20 @@ const ProjectsScroll = ({isActiveProjects}) => {
                         <div ref={ (el) => columns.current[1] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns.current[2] = el } className="dinamicColumns">
                           <div ref = { Twitterinfo } className='twitterInfo'>
-                              <h1 ref={(el) => info.current[0] = el}>Titulo</h1>
-                              <p ref={(el) => info.current[1] = el}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum magnam tenetur dolorum, dignissimos sequi fugiat i</p>
-                              <a ref={(el) => info.current[2] = el} href='hola'>link</a>
+                              <h1 ref={(el) => info.current[0] = el}>Twitter-clone</h1>
+                              <p ref={(el) => info.current[1] = el}>
+                                
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum magnam tenetur dolorum, dignissimos sequi fugiat i
+                              </p>
+                              <div ref={(el) => info.current[2] = el} className='launch_container'>
+                                <a>
+                                  <svg className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-uqopch" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LaunchIcon"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path></svg>
+                                </a>
+                                <a>
+                                  <svg className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-uqopch" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="GitHubIcon"><path d="M12 1.27a11 11 0 00-3.48 21.46c.55.09.73-.28.73-.55v-1.84c-3.03.64-3.67-1.46-3.67-1.46-.55-1.29-1.28-1.65-1.28-1.65-.92-.65.1-.65.1-.65 1.1 0 1.73 1.1 1.73 1.1.92 1.65 2.57 1.2 3.21.92a2 2 0 01.64-1.47c-2.47-.27-5.04-1.19-5.04-5.5 0-1.1.46-2.1 1.2-2.84a3.76 3.76 0 010-2.93s.91-.28 3.11 1.1c1.8-.49 3.7-.49 5.5 0 2.1-1.38 3.02-1.1 3.02-1.1a3.76 3.76 0 010 2.93c.83.74 1.2 1.74 1.2 2.94 0 4.21-2.57 5.13-5.04 5.4.45.37.82.92.82 2.02v3.03c0 .27.1.64.73.55A11 11 0 0012 1.27"></path></svg>
+                                </a>
+                              </div>
+                           
                             </div>
                           </div>
                         <div ref={ (el) => columns.current[3] = el } className="dinamicColumns"></div>
@@ -177,9 +188,16 @@ const ProjectsScroll = ({isActiveProjects}) => {
                         <div ref={ (el) => columns2.current[1] = el } className="dinamicColumns"></div>
                         <div ref={ (el) => columns2.current[2] = el } className="dinamicColumns">
                           <div ref = { justPlayInfo } className='justPlayInfo'>
-                            <h1 ref={(el) => info.current[3]= el}>Titulo</h1>
+                            <h1 ref={(el) => info.current[3]= el}>Just Play</h1>
                             <p ref={(el) => info.current[4] = el} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum magnam tenetur dolorum, dignissimos sequi fugiat i</p>
-                            <a ref={(el) => info.current[5] = el} href='hola'>link</a>
+                            <div ref={(el) => info.current[5] = el} className='launch_container'>
+                                <a>
+                                  <svg className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-uqopch" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LaunchIcon"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path></svg>
+                                </a>
+                                <a>
+                                  <svg className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-uqopch" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="GitHubIcon"><path d="M12 1.27a11 11 0 00-3.48 21.46c.55.09.73-.28.73-.55v-1.84c-3.03.64-3.67-1.46-3.67-1.46-.55-1.29-1.28-1.65-1.28-1.65-.92-.65.1-.65.1-.65 1.1 0 1.73 1.1 1.73 1.1.92 1.65 2.57 1.2 3.21.92a2 2 0 01.64-1.47c-2.47-.27-5.04-1.19-5.04-5.5 0-1.1.46-2.1 1.2-2.84a3.76 3.76 0 010-2.93s.91-.28 3.11 1.1c1.8-.49 3.7-.49 5.5 0 2.1-1.38 3.02-1.1 3.02-1.1a3.76 3.76 0 010 2.93c.83.74 1.2 1.74 1.2 2.94 0 4.21-2.57 5.13-5.04 5.4.45.37.82.92.82 2.02v3.03c0 .27.1.64.73.55A11 11 0 0012 1.27"></path></svg>
+                                </a>
+                              </div>
                           </div>
                         </div>
                         <div ref={ (el) => columns2.current[3] = el } className="dinamicColumns"></div>

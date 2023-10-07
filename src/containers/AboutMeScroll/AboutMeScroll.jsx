@@ -121,7 +121,19 @@ const AboutMeScroll = ( { isActive } ) => {
                 <p ref={ (el) => textRef.current[0] = el } className='aboutMe_text text1'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit aut odit ut natus incidunt aspernatur nisi nam ea sit aperiam laboriosam reprehenderit, voluptatum, beatae optio distinctio molestias, maiores soluta dolorem?</p>
               </div>
               <div ref={ line4 } className='flexBlocks_line line4'>
-                <p ref={ (el) => textRef.current[1] = el } className='aboutMe_text text1'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit aut odit ut natus incidunt aspernatur nisi nam ea sit aperiam laboriosam reprehenderit, voluptatum, beatae optio distinctio molestias, maiores soluta dolorem?</p>
+                <p ref={ (el) => textRef.current[1] = el } className='aboutMe_text text1'>
+               
+                  <h1 style={{fontSize: '20px'}}>Analista funcional </h1>
+                  <h2 style={{fontSize: '18px'}}>Secretaria de innovación y transformación digital</h2>
+                  <span>Python</span>
+                  <span>Postman</span>
+                  <span>Jira</span>
+                  <span>CSS</span>
+                  <span>HTML</span>
+                  <p>or sit amet consectetur, adipisicing elit. Impedit aut odit ut natus incidunt aspernatur nis</p>
+                  
+
+                </p>
               </div>
               <div ref={ line5 } className='flexBlocks_line line5'>
                 <p ref={ (el) => textRef.current[2] = el } className='aboutMe_text text1'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit aut odit ut natus incidunt aspernatur nisi nam ea sit aperiam laboriosam reprehenderit, voluptatum, beatae optio distinctio molestias, maiores soluta dolorem?</p>

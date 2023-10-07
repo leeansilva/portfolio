@@ -38,7 +38,7 @@
 }
 
 .project1 {
-    border-radius: 2px;
+    border-radius: 4px;
     width: 45%;
     height: 80%;
     display: flex;
@@ -46,6 +46,8 @@
     flex-direction: column;
     position: relative;
     align-self: center;
+    border-right: 4px solid #fff;
+    border-bottom: 4px solid #ffff;
 }
 
 .Pline3 {
@@ -65,7 +67,7 @@
     height: 0%;
     padding: -200px;
     background-color: #000;
-    opacity: 0.8;
+    opacity: 0.9;
     z-index: 1000;
     box-shadow: 0px 12px 0px -6px rgba(35, 184, 235, 0.99);
 }
@@ -90,17 +92,47 @@
 }
 
 .justPlayInfo {
-    background-color: red;
+    background-color: rgb(255, 255, 255);
     color: #000;
     height: 100%;
     scale: 0;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .twitterInfo {
-    background-color: rgb(123, 0, 255);
+    background-color: rgb(255, 255, 255);
     color: #000;
     height: 100%;
     scale: 0;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+ .twitterInfo > p,
+ .twitterInfo > h1,
+ .justPlayInfo > p,
+ .justPlayInfo > h1 {
+    text-align: center;
+}
+
+
+
+
+.launch_container{
+    display: flex !important;
+    scale: 1 !important;
+    margin: 0 auto;
+    width: 50%;
+    height: auto;
+    justify-content: space-around;
+}
+.launch_container a{
+   scale: 1 !important;
+   width: 45px;
+   height: 45px;
 }
 
 .twitterInfo h1,
@@ -121,6 +153,13 @@
     gap: 10px;
 }
 
+
+
+svg {
+    width: 55px;
+    height: 55px;
+}
+
 .projects_container{
     height: 100svh !important;
 }
@@ -128,7 +167,7 @@
 
 
 .project1 {
-    border-radius: 2px;
+    border-radius: 4px;
     width: 100%;
 }
     

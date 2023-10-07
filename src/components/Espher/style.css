@@ -34,12 +34,24 @@
 @media (max-width: 1535px) {
     .esferita{
         left: 250px;
-        top: -50px;
+        top: -200px;
     }
 }
-@media (max-width: 1200px) {
+
+@media (min-width:951px) and ( max-width: 1252px) {
+    .esferita {
+        display: none !important;
+    }
+    
+}
+@media (max-width: 950px) {
     .esferita{
-        display: none;
+        top: 25svh;
+        left: -10svw;
+    }
+    .tagcloud--item{
+        font-size: 15px;
     }
 }
+
 
