@@ -49,6 +49,7 @@
     justify-content: left;
     padding-left: 30px;
     align-items: center;
+    height: 30% !important;
 }
 
 .line5 {
@@ -58,7 +59,10 @@
     justify-content: left;
     padding-left: 30px;
     align-items: center;
+    height: 30% !important;
 }
+
+
 
 .line6 {
     left: 50px;
@@ -77,8 +81,16 @@
     align-items: center;
 }
 
+.text1{
+    border-radius: 5px;
+
+  
+    padding: 10px 
+}
+
 .aboutMe_text {
-    font-size: 18px;
+    
+    font-size: 22px;
     position: relative;
     color: #000;
     width: 700px;
@@ -106,10 +118,10 @@
         padding-left: 15px;
         padding-bottom: 10px;
     }
-    .line5 p{
+    .line5 .text5{
         display: none;
     }
-    .line6 p{
+    .line6 div{
         display: none;
     }
 
@@ -130,12 +142,31 @@
     }
 
     .line2 {
-        flex: 0
+        flex: 0;
+        display: none;
     }
+    .line3 {
+        flex: 1;
+    }
+    .line4 {
+        height: 50%;
+        flex: 1
+    }
+
+    .line5{
+        height: 50%;
+        flex: 7
+    }
+    
+    .aboutMe_text{
+        font-size: 18px;
+    }
+    
 
     .button_container {
         left: 50%;
         transform: translateX(-50%);
+        top: -60%;
         /* Centra horizontalmente */
     }
 

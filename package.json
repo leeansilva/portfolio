@@ -15,6 +15,7 @@
     "@frank-mayer/react-tag-cloud": "^1.2.1",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.16",
+    "animate.css": "^4.1.1",
     "gsap": "^3.11.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",

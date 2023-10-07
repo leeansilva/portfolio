@@ -13,14 +13,16 @@
 }
 
 .tagcloud--item{
-    color: #000000;
+    color: #ffffff;
+    border-radius: 3px;
+    background-color: #000000;
     font-family: Verdana,Geneva,sans-serif; 
     font-size: 20px;
 }
 
 .tagcloud--item:hover{
-    color: #fff;
-    background-color: #000000;
+    color: #000000;
+    background-color: #ffffff;
     cursor: pointer;
 }
 
@@ -46,7 +48,7 @@
 }
 @media (max-width: 950px) {
     .esferita{
-        top: 25svh;
+        top: 27svh;
         left: -10svw;
     }
     .tagcloud--item{

@@ -1,0 +1,79 @@
+.container_card {
+    width: 700px;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #000;
+    box-shadow: 20px 16px 0px -6px rgb(27, 193, 243);
+    
+}
+
+.title_link_card {
+    
+}
+
+.title_link_card h3 {
+    padding-left: 5px;
+    background-color: hsl(0, 0%, 0%);
+    color: #fff;
+    padding-left: 5px;
+}
+
+.title_link_card a {
+    padding-left: 5px;
+    
+    cursor: pointer;
+    border-bottom: 1px solid #000;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+}
+
+a:visited {
+    text-decoration: none;
+    color: #000;
+}
+
+a:link {
+    color: #000;
+    /* Por ejemplo, para establecer el color a azul: color: blue; */
+    text-decoration: none;
+  }
+
+a:hover {
+    color: rgb(27, 193, 243);
+    transition: 0.2s;
+}
+
+.title_link_card svg {
+    margin-left: 6px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.date_card {
+    border-bottom: 1px solid #000;
+    padding-left: 5px;
+    
+}
+
+.description_card {
+    padding-left: 5px;
+    
+    overflow-y: scroll;
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+
+@media (max-width: 950px) {
+    .container_card {
+        width: 95%;
+        box-shadow: 12px 12px 0px -6px rgb(27, 193, 243);
+        margin-top: -12%;
+    }
+
+    .description_card {
+        font-size: 16px;
+    }
+}

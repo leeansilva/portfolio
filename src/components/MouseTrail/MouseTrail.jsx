@@ -44,7 +44,7 @@ function MouseTrail() {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         setIsVisible(false);
-      }, 50); // Cambiar el tiempo de acuerdo a tus preferencias
+      }, 100); // Cambiar el tiempo de acuerdo a tus preferencias
     };
 
     const handleMouseMove = (e) => {
@@ -54,14 +54,6 @@ function MouseTrail() {
       setIsVisible(true); // Mostrar los círculos inmediatamente al mover el mouse
     };
 
-    // const handleTouchMove = (e) => {
-    //   if (e.touches.length > 0) {
-    //     coords.x = e.touches[0].clientX;
-    //     coords.y = e.touches[0].clientY;
-    //     animatedCircles();
-    //     setIsVisible(true); // Mostrar los círculos inmediatamente al mover el dedo
-    //   }
-    // };
 
     window.addEventListener('mousemove', handleMouseMove);
     // window.addEventListener('touchmove', handleTouchMove);
