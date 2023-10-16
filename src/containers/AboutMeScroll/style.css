@@ -13,6 +13,8 @@
     background-color: #fff;
 }
 
+
+
 .line1 {
     display: flex;
     flex-direction: row;
@@ -51,6 +53,9 @@
     align-items: center;
     height: 30% !important;
 }
+.line4_click {
+    height: 100% !important;
+}
 
 .line5 {
     left: 100px;
@@ -60,6 +65,10 @@
     padding-left: 30px;
     align-items: center;
     height: 30% !important;
+}
+
+.line5_click{
+    height: 100% !important;
 }
 
 
@@ -81,15 +90,15 @@
     align-items: center;
 }
 
-.text1{
+.text1 {
     border-radius: 5px;
 
-  
-    padding: 10px 
+
+    padding: 10px
 }
 
 .aboutMe_text {
-    
+
     font-size: 22px;
     position: relative;
     color: #000;
@@ -105,8 +114,11 @@
 .button_container {
     width: 150px;
     position: absolute;
-    left: 50vh;
+    left: 35vw;
+    transform: translateX(-50%);
+    bottom: 38px;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////// */
 
@@ -118,10 +130,12 @@
         padding-left: 15px;
         padding-bottom: 10px;
     }
-    .line5 .text5{
+
+    .line5 .text5 {
         display: none;
     }
-    .line6 div{
+
+    .line6 {
         display: none;
     }
 
@@ -137,38 +151,36 @@
     }
 
     .line1 {
-        flex: 0;
-        padding-bottom: 20px;
+        max-height: 60px;
+        padding-top: 4px;
     }
 
     .line2 {
-        flex: 0;
         display: none;
     }
+
     .line3 {
-        flex: 1;
-    }
-    .line4 {
-        height: 50%;
-        flex: 1
+        
+
+        height: auto;
     }
 
-    .line5{
-        height: 50%;
-        flex: 7
+    .line4_experience{
+        flex: 4;
+        padding-top: 20px;
     }
-    
-    .aboutMe_text{
-        font-size: 18px;
+
+    .line5 {
+        
     }
-    
+
+    .aboutMe_text {
+        font-size: 16px;
+    }
 
     .button_container {
         left: 50%;
         transform: translateX(-50%);
-        top: -60%;
-        /* Centra horizontalmente */
+        bottom: 38px;
     }
-
-
 }

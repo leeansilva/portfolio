@@ -85,9 +85,9 @@ const Button = ({color, title,contactMeContainer}) => {
   };
 
   const handleClick = () => {
-    if (contactMeContainer.current) {
+    if (contactMeContainer?.current) {
       contactMeContainer.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    } else null
   };
 
 return (

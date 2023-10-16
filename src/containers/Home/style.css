@@ -9,6 +9,7 @@
     flex-direction: row;
 }
 
+
 .navbar-container{
     position: fixed;
     top: 0;
@@ -34,12 +35,13 @@
     align-items: flex-start;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-top: 10%;
+    margin-top: 8%;
     justify-self: center;
+    gap: 20px;
 }
 
 .Name_container_text{
-    font-size: 24px;
+    font-size: 54px;
     color: #dcdcdc;
     letter-spacing: 3px;
     font-weight: 300;
@@ -49,6 +51,7 @@
 .name_flex{
     display: flex;
     gap: 26px;
+    margin-bottom: 20px
 }
 
 .developer_flex{
@@ -65,11 +68,12 @@
     margin-top: 55px;
 }
 .Name_container_text2{
-    font-size: 19px;
+    font-size: 45px;
     color: #dcdcdc;
     letter-spacing: 3px;
     font-weight: 300;
-    margin-bottom: -10px;   
+    margin-bottom: -10px;
+    width: 900px;
 }
 
 .home_h2{
@@ -133,7 +137,7 @@ section:nth-child(3){
     background-color: yellow;
 }
 section:nth-child(4){
-    background-color: greenyellow;
+    background-color: rgb(255, 255, 255);
 }
 
 @media (max-width: 950px) {
@@ -146,11 +150,10 @@ section:nth-child(4){
         gap: 0;
        flex-direction: column;
     }
+    
     .button__container{
         width: 150px;
         margin-left: 0px;
-
-        
     }
     .developer_flex{
         flex-direction: column;
@@ -163,5 +166,18 @@ section:nth-child(4){
        font-size: 10px;
        margin-left: 20px;
        margin-top: 100px;
+       gap: 30px;
+    
+    }
+    .Name_container_text{
+        font-size: 30px;
+    }
+
+    .name_flex{
+        margin-bottom: 0;
+    }
+    .Name_container_text2{
+        font-size: 25px;
+        width: 300px;
     }
 }

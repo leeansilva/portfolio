@@ -1,4 +1,5 @@
 .burger-line {
+  display: none;
   stroke: #fff;
   transition: transform 0.3s ease;
   box-sizing: border-box;

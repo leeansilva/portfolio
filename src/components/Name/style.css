@@ -41,6 +41,7 @@
 @media (max-width: 700px) {
   .Name-text-container {
     height: 25%;
+
   }
 
   .char {
@@ -48,6 +49,6 @@
   }
 
   .Name-word {
-    gap: 6px;
+    gap: 4px;
   }
 }

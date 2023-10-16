@@ -1,4 +1,4 @@
-.contact_container {
+/* .contact_container {
     position: fixed;
     left: 300vw;
     height: 100svh !important;
@@ -10,11 +10,6 @@
 .rectangulo {
     background-color: #000;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-
     position: absolute;
     top: 0;
     z-index: 20000;
@@ -26,6 +21,7 @@
     position: relative;
     background-color: #ffffff;
     z-index: 19000;
+
 }
 
 .flexCuerdas {
@@ -87,28 +83,16 @@
     font-size: 30px;
     padding-left: 10px;
     border: 2px solid #000;
-    border-radius: 4px;
 }
 
-.error-message{
-    color: red;
-    font-weight: 600;
-}
-.form-group{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
 .inputName {
     height: 80px;
-    width: 87.5%;
+    width: 400px;
 }
 
 .inputMail {
     height: 80px;
-    width: 87.5%;
+    width: 400px;
 }
 
 .inputMessage {
@@ -159,7 +143,10 @@
     footer {
         display: none
     }
-   
+    .form {
+        display: none !important;
+    }
+    
 }
 
 @media (max-width: 950px) {
@@ -194,21 +181,20 @@
     .form {
         top: 15%;
     }
-   
 
     .form input {
-        font-size: 20px;
+        font-size: 25px;
     }
 
     .inputMessage {
         width: 85%;
-        height: 80px;
+        height: 100px;
         text-align: center;
     }
 
     .inputMail {
         width: 85%;
-        height: 40px;
+        height: 50px;
     }
 
     .inputName {
@@ -219,17 +205,11 @@
     .form button {
         width: 85%;
     }
-    footer{
-        display: flex;
-        height: auto;
-        width: 100vw;
-        flex-direction: column;
-        align-items: center;
-    }
+   
 
 }
 
 footer {
     background-color: #000;
     color: #ffffff;
-}
+} */

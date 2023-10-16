@@ -1,14 +1,55 @@
 .container_card {
-    width: 700px;
-    height: auto;
+    width: 35vw;
+    height: max-content;
     border-radius: 5px;
     border: 1px solid #000;
+
+
+}
+.container_card_flex{
+    display: flex;
+    flex-wrap: nowrap;
+    width: fit-content;
+    height: max-content;
     box-shadow: 20px 16px 0px -6px rgb(27, 193, 243);
+    border-radius: 5px;
+}
+.img_experience {
+    background-color: #fed501;
+    width: 20%; /* Ajusta el ancho del contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid #000;
+  }
+  .img_experience img{
+    height: 42%;
+    width: 90%;
+  }
+
+  .img_experience2 {
+    background-color: white;
+    width: 20%; /* Ajusta el ancho del contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid #000;
+  }
+  .img_experience2 img{
+    height: 45%;
+    width: 70%;
+  }
+  
+.title_link_card {
     
 }
 
-.title_link_card {
-    
+.experience_click{
+    display: none;
 }
 
 .title_link_card h3 {
@@ -20,7 +61,6 @@
 
 .title_link_card a {
     padding-left: 5px;
-    
     cursor: pointer;
     border-bottom: 1px solid #000;
     display: flex;
@@ -54,26 +94,38 @@ a:hover {
 
 .date_card {
     border-bottom: 1px solid #000;
-    padding-left: 5px;
+    padding: 5px;
+
     
 }
 
 .description_card {
     padding-left: 5px;
-    
+    padding: 7px;
     overflow-y: scroll;
-    font-size: 18px;
+    font-size: 22px;
     padding-bottom: 5px;
 }
 
 @media (max-width: 950px) {
     .container_card {
         width: 95%;
+        height: auto;
         box-shadow: 12px 12px 0px -6px rgb(27, 193, 243);
         margin-top: -12%;
     }
 
     .description_card {
-        font-size: 16px;
+        font-size: 14px;
+    }
+    .img_experience{
+        display: none;
+    }
+    .img_experience2{
+        display: none;
+    }
+    .container_card_flex{
+   
+        box-shadow: none
     }
 }

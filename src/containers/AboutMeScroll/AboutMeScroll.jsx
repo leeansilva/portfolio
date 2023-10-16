@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import Espher from "../../components/Espher/Espher";
 import "./style.css";
-import Name from "../../components/Name/Name";
 import Button from "../../components/Button/Button";
 import LinesAboutMe from "../../components/LinesAboutMe/LinesAboutMe";
 
@@ -72,6 +71,7 @@ const AboutMeScroll = ({ isActive }) => {
           {
             height: heightTo,
             translateX: xTo,
+
             ease: "none",
             duration: 0.5,
           }
@@ -93,6 +93,30 @@ const AboutMeScroll = ({ isActive }) => {
           }
         );
       }
+
+      function borderAnimation(element,border, from, to) {
+        return gsap.fromTo(
+          element.current,
+          {
+          [border]: from
+          },
+          {
+            [border]: to,
+            ease: "none",
+            duration: 0.5,
+          }
+        );
+      }
+      console.log(isActive)
+  
+      const border1 = borderAnimation(line1,"borderBottomLeftRadius", isActive == 'next' ? "1px" : isActive == "previous" || isActive == '' && '8px', isActive == "previous"  && "8px")  
+      const border2 = borderAnimation(line2,"borderBottomLeftRadius", isActive == 'next' ? "1px" : isActive == "previous" || isActive == '' && '8px', isActive == "previous"  && "8px")  
+      const border3 = borderAnimation(line3,"borderBottomLeftRadius", isActive == 'next' ? "1px" : isActive == "previous" || isActive == '' && '8px', isActive == "previous"  && "8px")  
+      
+      const border5 = borderAnimation(line5,"borderTopLeftRadius", isActive == 'next' ? "1px" : isActive == "previous" || isActive == '' && '8px', isActive == "previous"  && "8px")  
+      const border6 = borderAnimation(line6,"borderTopLeftRadius", isActive == 'next' ? "1px" : isActive == "previous" || isActive == '' && '8px', isActive == "previous"  && "8px")  
+      const border7 = borderAnimation(line7,"borderTopLeftRadius", isActive == 'next' ? "1px" : isActive == "previous" || isActive == '' && '8px', isActive == "previous"  && "8px")  
+    
 
       const animationText = gsap.fromTo(
         textRef.current,
@@ -237,11 +261,16 @@ const AboutMeScroll = ({ isActive }) => {
         nameAnimation.kill();
         espherAnimation.kill();
         animationText.kill();
+        border1.kill();
+        border2.kill();
+        border3.kill();
+     
+        border5.kill();
+        border6.kill();
+        border7.kill();
       };
     }
   }, [isActive]);
-
-  console.log(fadeIn);
 
   return (
     <div className="sections aboutMe_container" ref={AboutMeContainer}>

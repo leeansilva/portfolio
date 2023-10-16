@@ -1,34 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&family=Noto+Serif&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&family=Noto+Serif&display=swap'); */
 
 html,
 body,
-*{
-    font-family: 'EB Garamond', serif;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;
-    cursor: none;
+* {
+  font-family: 'Quicksand Variable', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  cursor: none;
 }
 
-body{
+body {
   background-color: #0000;
 }
 
-html,body{
+html, body {
   overflow: hidden;
 }
 
 #root {
-    box-sizing: border-box;
-    background-color: #15cb24;
-  }
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
 
-  .pin-spacer{
-    overflow-x: hidden;
-  }
+.pin-spacer {
+  overflow-x: hidden;
+}
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }

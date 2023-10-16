@@ -38,7 +38,7 @@
 }
 
 .project1 {
-    border-radius: 4px;
+    border-radius: 1px;
     width: 45%;
     height: 80%;
     display: flex;
@@ -46,7 +46,7 @@
     flex-direction: column;
     position: relative;
     align-self: center;
-    box-shadow: 20px 20px 0px 3px rgba(255, 255, 255, 0.96);
+    box-shadow: 20px 20px 0px 3px rgba(208, 18, 255, 0.96);
 }
 
 .Pline3 {
@@ -62,7 +62,7 @@
 }
 
 .dinamicColumns {
-    width: 5%;
+    width: 33%;
     height: 0%;
     padding: -200px;
     background-color: #000;
@@ -83,6 +83,7 @@
     height: 100%;
     border-radius: 2px;
     background-color: none;
+    border: 2px solid #fff;
 }
 
 .text_projects {
@@ -91,47 +92,100 @@
 }
 
 .justPlayInfo {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(178, 255, 106);
     color: #000;
     height: 100%;
     scale: 0;
     display: flex !important;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+
+
 }
 
 .twitterInfo {
-    background-color: rgb(60, 226, 255);
+    background-color: rgb(139, 238, 255);
     color: #000;
     height: 100%;
     scale: 0;
     display: flex !important;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+
 }
 
- .twitterInfo > p,
- .twitterInfo > h1,
- .justPlayInfo > p,
- .justPlayInfo > h1 {
+.twitterInfo>p,
+.twitterInfo>h1,
+.justPlayInfo>p,
+.justPlayInfo>h1 {
     text-align: center;
 }
 
+.twitterInfo>h1 {
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    font-size: 55px;
+    border: 1px solid #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.justPlayInfo>h1 {
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    font-size: 60px;
+    border: 1px solid #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 
 
-
-.launch_container{
+.launch_container {
     display: flex !important;
-    scale: 1 !important;
-    margin: 0 auto;
-    width: 50%;
+    width: 100%;
     height: auto;
     justify-content: space-around;
+    border-top: 1px solid #000;
+    align-items: flex-start;
+    scale: 0;
+    background-color: #000000;
+    padding: 10px 0 10px 0;
+    border: 1px solid #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
-.launch_container a{
-   scale: 1 !important;
-   width: 45px;
-   height: 45px;
+
+.launch_container a {
+    scale: 1 !important;
+    width: auto;
+    height: 75px;
+    border: 1px solid black;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    box-shadow: 3px 3px 0px 3px rgba(254, 255, 255, 0.99);
+}
+
+.launch_container a:hover {
+    border: 1px solid rgba(208, 18, 255, 0.96);
+    box-shadow: 5px 5px 0px 3px rgba(208, 18, 255, 0.96)
+}
+
+.launch_container a:hover svg {
+    fill: rgba(208, 18, 255, 0.96);
+    transition: 0.2s;
+}
+.launch_container svg {
+    fill: rgba(255, 255, 255, 0.96);
+}
+
+svg {
+    width: 75px;
+    height: 75px;
+}
+
+.twitterInfo p,
+.justPlayInfo p {
+    font-size: 25px;
 }
 
 .twitterInfo h1,
@@ -140,35 +194,61 @@
 .justPlayInfo p,
 .twitterInfo a,
 .justPlayInfo a {
-  scale: 0;
+    scale: 0;
 }
 
 @media (max-width: 950px) {
     .row__projects {
-    display: flex;
-    flex-direction: column !important;
-    flex-wrap: nowrap;
-    width: 100%;
-    gap: 10px;
-}
+        display: flex;
+        flex-direction: column !important;
+        flex-wrap: nowrap;
+        width: 100%;
+        gap: 30px;
+    }
 
+    .dinamicColumns {
+        width: 10%;
+    }
 
+    .project1 {
+        box-shadow: 8px 8px 0px 1px rgba(208, 18, 255, 0.96);
+    }
 
-svg {
-    width: 55px;
-    height: 55px;
-}
+    .twitterInfo p,
+    .justPlayInfo p {
+        font-size: 15px;
+    }
 
-.projects_container{
-    height: 100svh !important;
-}
+    .launch_container a {
+        scale: 1 !important;
+        width: auto;
+        height: 40px;
 
+    }
 
+    svg {
+        width: 40px;
+        height: 40px;
+    }
 
-.project1 {
-    border-radius: 4px;
-    width: 100%;
-}
-    
+    .projects_container {
+        height: 100svh !important;
+    }
+
+    .project1 {
+        border-radius: 1px;
+        width: 100%;
+    }
+
+    .justPlayInfo>h1 {
+        font-size: 25px;
+    }
+
+    .twitterInfo>h1 {
+        font-size: 25px;
+    }
+    .launch_container a {
+        box-shadow: 3px 3px 0px 1px rgba(254, 255, 255, 0.99);
+    }
 
 }

@@ -1,0 +1,26 @@
+.map {
+    width: 75%;
+    height: 300px;
+    border-top: 4px solid rgb(0, 0, 0);
+    border-bottom: 4px solid rgb(0, 0, 0);
+}
+
+.leaflet-control-zoom {
+    display: none !important;
+}
+
+.leaflet-control-attribution {
+    display: none !important;
+}
+
+.map{
+    /* filter: grayscale(50%) sepia(1%) brightness(79%) hue-rotate(100deg) saturate(276%) invert(100%); */
+    filter: brightness(91%) hue-rotate(102deg) saturate(500%);
+}
+
+@media (max-width: 950px) {
+    .map {
+        width: 100%;
+        height: 200px;
+    }
+}

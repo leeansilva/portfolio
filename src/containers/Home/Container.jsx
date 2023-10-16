@@ -8,23 +8,30 @@ import "./style.css";
 import { Observer } from "gsap/Observer";
 import { gsap } from "gsap";
 import Button from "../../components/Button/Button";
+import ModalSwipe from "../../components/ModalSwipe/ModalSwipe";
 
 const Container = () => {
   const [clickOut, setClickOut] = useState(true);
   const [section1, setSection1] = useState("");
   const [section2, setSection2] = useState("");
   const [section3, setSection3] = useState("");
+  const [swipe, setSwipe] = useState(false);
   const sections = useRef([]);
   const homeContainer = useRef(null);
   const contactMeContainer = useRef(null);
 
   const touchStartX = useRef(null);
+  const windowWidth = window.innerWidth;
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
-
   const handleTouchMove = (e) => {
+    if (!swipe) {
+      e.preventDefault(); // Deshabilita el desplazamiento si swipe es false
+      return;
+    }
+
     if (touchStartX.current !== null) {
       const deltaX = e.touches[0].clientX - touchStartX.current;
 
@@ -44,10 +51,12 @@ const Container = () => {
   };
 
   const nextSection = (index) => {
-    let currentIndex
-    index != undefined ?  currentIndex = index :  currentIndex = Math.floor(
-      -homeContainer.current.getBoundingClientRect().x / window.innerWidth
-    );
+    let currentIndex;
+    index != undefined
+      ? (currentIndex = index)
+      : (currentIndex = Math.floor(
+          -homeContainer.current.getBoundingClientRect().x / window.innerWidth
+        ));
 
     if (currentIndex < sections.current.length - 1) {
       const section = currentIndex + 1;
@@ -91,6 +100,7 @@ const Container = () => {
   };
 
   useEffect(() => {
+    windowWidth >= 950 && setSwipe(true)
     gsap.registerPlugin(Observer);
 
     const observer = Observer.create({
@@ -98,6 +108,11 @@ const Container = () => {
       type: "wheel",
       wheelSpeed: 0.5,
       onWheel: (e) => {
+        if (!swipe) {
+          e.preventDefault(); // Deshabilita el desplazamiento si swipe es false
+          return;
+        }
+
         const currentIndex = Math.floor(
           -homeContainer.current.getBoundingClientRect().x / window.innerWidth
         );
@@ -121,14 +136,19 @@ const Container = () => {
       window.removeEventListener("touchmove", handleTouchMove);
       observer.kill();
     };
-  }, []);
-
+  }, [swipe]);
   return (
     <div
       className="main_container"
       ref={homeContainer}
       onClick={() => setClickOut(!clickOut)}
     >
+      {
+        swipe == false ? 
+        <ModalSwipe setSwipe={setSwipe} />
+        :
+        <></>
+      }
       <section ref={(el) => (sections.current[0] = el)}>
         <NavBar clickOut={clickOut} handleClickOut={handleClickOut} />
 
@@ -136,12 +156,12 @@ const Container = () => {
           <div className="home__Name_container">
             <h1 className="Name_container_text">Hola, soy</h1>
             <div className="name_flex">
-              <Name fontSize={"90px"} color={"white"} text="Leandro" />
-              <Name fontSize={"90px"} color={"white"} text="Silva," />
+              <Name fontSize={"120px"} color={"white"} text="Leandro" />
+              <Name fontSize={"120px"} color={"white"} text="Silva," />
             </div>
             <div className="developer_flex">
-              <Name fontSize={"60px"} color={"white"} text="desarrollador " />
-              <Name fontSize={"60px"} color={"white"} text="web. " />
+              <Name fontSize={"80px"} color={"white"} text="desarrollador " />
+              <Name fontSize={"80px"} color={"white"} text="web. " />
             </div>
             <h1 className="Name_container_text2">
               Apasionado por crear experiencias digitales excepcionales.
