@@ -1,16 +1,33 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Button from "../Button/Button";
 import Name from "../Name/Name";
 
-export default function Form({ setIsSent }) {
+export default function Form({ setIsSent, isSent }) {
   const [nameValue, setNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
   const [messageValue, setMessageValue] = useState("");
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [messageError, setMessageError] = useState("");
+  const [sending, setIsSending] = useState("Enviar");
   const form = useRef(null);
+
+  const handleSend = (e) => {
+    e.preventDefault();
+
+    if (isSent === false) {
+      setIsSending("Enviando...");
+    }
+
+    sendEmail(e);
+  };
+
+  useEffect(() => {
+    if (isSent === true) {
+      setIsSending("Enviar");
+    }
+  }, [isSent]);
 
   const VITE_EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const VITE_EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
@@ -52,6 +69,9 @@ export default function Form({ setIsSent }) {
             setNameValue("");
             setEmailValue("");
             setMessageValue("");
+            setTimeout(() => {
+              setIsSent(false);
+            }, 3000);
           },
           (error) => {
             console.log(error.text);
@@ -84,7 +104,7 @@ export default function Form({ setIsSent }) {
         </div>
         <div className="form-group">
           <input
-           placeholder="Email"
+            placeholder="Email"
             id="email"
             style={{ border: emailError !== "" ? "1px solid red" : "" }}
             className="inputMail"
@@ -103,7 +123,7 @@ export default function Form({ setIsSent }) {
         </div>
         <div className="form-group">
           <input
-           placeholder="Mensaje"
+            placeholder="Mensaje"
             id="message"
             style={{ border: messageError !== "" ? "1px solid red" : "" }}
             className="inputMessage"
@@ -120,11 +140,8 @@ export default function Form({ setIsSent }) {
             <></>
           )}
         </div>
-        <div
-          onClick={(e) => sendEmail(e)}
-          style={{ width: "150px", height: "60px" }}
-        >
-          <Button color={"black"} title={"SEND"} />
+        <div onClick={(e) => handleSend(e)} className="container_button">
+          <Button color={"black"} title={sending} />
         </div>
       </form>
     </>

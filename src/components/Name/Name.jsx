@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import Splitting from "splitting";
 import "splitting/dist/splitting.css";
@@ -8,6 +8,7 @@ import './style.css'
 
 const Name = ({ text, color,fontSize }) => {
   const spanRefs = useRef([]);
+  const [endAnimation, setEndAnimation] = useState(false)
 
   useEffect(() => {
     Splitting();
@@ -18,6 +19,9 @@ const Name = ({ text, color,fontSize }) => {
     },{
       opacity: 1,
       duration: 0.1,
+      onComplete:()=>{
+        setEndAnimation(true)
+      },
       stagger:{
         from: "left",
         amount: 1
@@ -33,32 +37,34 @@ const Name = ({ text, color,fontSize }) => {
 
   const handleHover = (e) => {
 
-    gsap.killTweensOf(e.target);
-    gsap.set(e.target, {
-      left:100,
-      top:100,
-    })
+   endAnimation == true &&
+   gsap.killTweensOf(e.target);
+   gsap.set(e.target, {
+     left:100,
+     top:100,
+   })
 
-    const tl1 = gsap
-    .timeline()
-    .to(e.target, {
-      duration: 0.2,
-      rotate: 12,
-      scale: 1.5,
-    })
-    .to(e.target,{
-      rotate: 0,
-      duration: 0.2,
-      scale: 1,
-    })
-    .to(e.target, {
-      rotate:6,
-      duration: 0.2,
-    })
-    .to(e.target,{
-      rotate: 0,
-      duration: 0.2,
-    })
+   const tl1 = gsap
+   .timeline()
+   .to(e.target, {
+     duration: 0.2,
+     rotate: 12,
+     scale: 1.5,
+   })
+   .to(e.target,{
+     rotate: 0,
+     duration: 0.2,
+     scale: 1,
+   })
+   .to(e.target, {
+     rotate:6,
+     duration: 0.2,
+   })
+   .to(e.target,{
+     rotate: 0,
+     duration: 0.2,
+   })
+   
 
    
   };

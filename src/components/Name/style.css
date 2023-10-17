@@ -11,7 +11,6 @@
 
 
 .Name-word {
-
   display: flex;
   color: #fff;
   justify-content: center;
@@ -51,4 +50,19 @@
   .Name-word {
     gap: 4px;
   }
+}
+
+
+@media (max-height: 954px) and (min-height : 600px) and (min-width: 951px) {
+  .Name-text-container {
+    height: 9%;
+  }
+  .char {
+    font-size: 60px !important;
+  }
+
+  .Name-word {
+    gap: 4px;
+  }
+
 }

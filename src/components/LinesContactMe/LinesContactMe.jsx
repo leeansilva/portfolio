@@ -4,7 +4,7 @@ import "./style.css";
 import Map from "../Map/Map";
 import Form from "../Form/Form";
 
-export default function LinesContactMe({setIsSent}) {
+export default function LinesContactMe({setIsSent, isSent}) {
   const nameRef = useRef(null);
   const lines = useRef([]);
   
@@ -24,7 +24,7 @@ export default function LinesContactMe({setIsSent}) {
         ref={(el) => (lines.current[1] = el)}
         className="CflexBlocks_line Cline2"
       ></div>
-      <Form setIsSent={setIsSent} />
+      <Form isSent={isSent} setIsSent={setIsSent} />
       <div
         ref={(el) => (lines.current[2] = el)}
         className="CflexBlocks_line Cline3"

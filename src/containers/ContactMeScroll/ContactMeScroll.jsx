@@ -43,8 +43,6 @@ const ContactMeScroll = ({ isActive }) => {
     }
   }, [isActive]);
 
-
-
   return (
     <div
       ref={contactMeContainer}
@@ -54,50 +52,79 @@ const ContactMeScroll = ({ isActive }) => {
       {isSent ? <Alert isSent={isSent} setIsSent={setIsSent} /> : <></>}
       <div ref={rectangulo} className="rectangulo">
         <Social>
-          <LinkedinIcon />
+          <a target="_blank" href="https://www.linkedin.com/in/leandrosilva-/">
+            <LinkedinIcon />
+          </a>
         </Social>
 
         <Social>
-          <GitHubIcon />
+          <a target="_blank" href="https://github.com/leeansilva">
+            <GitHubIcon />
+          </a>
         </Social>
 
         <Social>
-          <WhatsappIcon />
+          <a target="_blank" href="https://api.whatsapp.com/send/?phone=%2B541135654619&text=Hola%20+Lean!%20+me+gustó%20tu%20portfolio!...+&type=phone_number&app_absent=0">
+            <WhatsappIcon />
+          </a>
         </Social>
         <Social>
-          <FacebookIcon />
+          <a target="_blank" href="https://www.facebook.com/lean.silva.92/">
+            <FacebookIcon />
+          </a>
         </Social>
         <Social>
-          <Instagram />
+          <a target="_blank" href="https://www.instagram.com/leeansilva_/">
+            <Instagram />
+          </a>
         </Social>
         <p style={{ color: "white" }}>Desing & Built by Leandro Silva.</p>
       </div>
 
-      <LinesContactMe setIsSent={setIsSent} />
+      <LinesContactMe isSent={isSent} setIsSent={setIsSent} />
 
-     <Chords />
+      <Chords />
 
       <footer>
-        <div style={{display: 'flex', justifyContent:'space-around', width: '100%', margin: '10px 0 10px 0'}}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            width: "100%",
+            margin: "10px 0 10px 0",
+          }}
+        >
           <Social>
-            <LinkedinIcon />
+            <a target="_blank" href="https://www.linkedin.com/in/leandrosilva-/">
+              <LinkedinIcon />
+            </a>
           </Social>
 
           <Social>
-            <GitHubIcon />
+            <a target="_blank" href="https://github.com/leeansilva">
+              <GitHubIcon />
+            </a>
           </Social>
 
           <Social>
-            <WhatsappIcon />
+            <a target="_blank" href="https://api.whatsapp.com/send/?phone=%2B541135654619&text=Hola%20+Lean!%20+me+gustó%20tu%20portfolio!...+&type=phone_number&app_absent=0">
+              <WhatsappIcon />
+            </a>
           </Social>
           <Social>
-            <FacebookIcon />
+            <a target="_blank" href="https://www.facebook.com/lean.silva.92/">
+              <FacebookIcon />
+            </a>
           </Social>
           <Social>
-            <Instagram />
+            <a target="_blank" href="https://www.instagram.com/leeansilva_/">
+              <Instagram />
+            </a>
           </Social>
         </div>
-        <p style={{paddingBottom:'10px'}}>Desing & Built by Leandro Silva.</p>
+        <p style={{ paddingBottom: "10px" }}>
+          Desing & Built by Leandro Silva.
+        </p>
       </footer>
     </div>
   );

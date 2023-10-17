@@ -100,7 +100,7 @@ const Container = () => {
   };
 
   useEffect(() => {
-    windowWidth >= 950 && setSwipe(true)
+    windowWidth >= 950 && setSwipe(true);
     gsap.registerPlugin(Observer);
 
     const observer = Observer.create({
@@ -118,10 +118,11 @@ const Container = () => {
         );
         if (e.deltaY > 0) {
           // Desplazamiento hacia abajo
-          previousSection();
+         
+          nextSection();
         } else {
           // Desplazamiento hacia arriba
-          nextSection();
+          previousSection();
         }
       },
       tolerance: 200,
@@ -143,12 +144,7 @@ const Container = () => {
       ref={homeContainer}
       onClick={() => setClickOut(!clickOut)}
     >
-      {
-        swipe == false ? 
-        <ModalSwipe setSwipe={setSwipe} />
-        :
-        <></>
-      }
+      {swipe == false ? <ModalSwipe setSwipe={setSwipe} /> : <></>}
       <section ref={(el) => (sections.current[0] = el)}>
         <NavBar clickOut={clickOut} handleClickOut={handleClickOut} />
 

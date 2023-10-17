@@ -12,7 +12,6 @@ const Espher = () => {
             radius: Math.min(800, w.innerWidth, w.innerHeight) / (window.innerWidth < 1535 ? 3 : 2),
             maxSpeed: "fast",
             noDrag: true
-           
         })}
 
     >
@@ -33,7 +32,8 @@ const Espher = () => {
             "Gsap",
             "JSON",
             "BEM",
-            "Three.js"
+            "Python"
+          
         ]}
     </TagCloud>
   )

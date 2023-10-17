@@ -129,3 +129,30 @@ a:hover {
         box-shadow: none
     }
 }
+
+@media (max-height: 954px) and (min-height : 600px) and (min-width: 1000px ) and (max-width: 1222px) {
+    .container_card {
+        width: 65vw;
+        height: auto;     
+    }
+    .description_card {
+        font-size: 16px;
+    }
+}
+
+@media (max-height: 954px) and (min-height : 600px) and (min-width: 1222px ){
+    .container_card {
+        width: 48vw;
+        height: auto;     
+    }
+    .description_card {
+        font-size: 16px;
+    }
+}
+
+@media (max-height: 954px) and (min-height : 600px) and (min-width: 1400px) {
+    .container_card {
+        width: 40vw;
+        height: auto;     
+    }
+}

@@ -1,11 +1,13 @@
-import React from "react";
-import Instagram from "../../icons/Instagram";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 
-export default function Social({ children }) {
+export default function Social({children, link}) {
+
   return (
-    <div className="social_container">
-      <div className="social">{children}</div>
+    <div onClick={()=> handle(link)} className="social_container">
+      <div className="social">
+        {children}
+      </div>
     </div>
   );
 }

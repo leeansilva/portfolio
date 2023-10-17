@@ -252,3 +252,28 @@ svg {
     }
 
 }
+
+@media (max-height: 954px) and (min-height : 600px) and (min-width: 951px) {
+    .twitterInfo p,
+    .justPlayInfo p {
+        font-size: 20px;
+    }
+    svg {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .launch_container a {
+        scale: 1 !important;
+        width: auto;
+        height: 45px;
+
+    }
+    .twitterInfo>h1 {
+        font-size: 25px;
+    }
+
+    .justPlayInfo>h1 {
+        font-size: 25px;
+    }
+}

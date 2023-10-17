@@ -165,7 +165,7 @@ section:nth-child(4){
     .home__Name_container{
        font-size: 10px;
        margin-left: 20px;
-       margin-top: 100px;
+       margin-top: 5%;
        gap: 30px;
     
     }
@@ -180,4 +180,25 @@ section:nth-child(4){
         font-size: 25px;
         width: 300px;
     }
+}
+
+
+@media  (max-height : 600px) and (max-width: 951px) {
+    .Name_container_text2{
+        font-size: 18px;
+        width: 60%;
+    }
+
+    .Name_container_text{
+        font-size: 24px;
+    }
+    .name_flex{
+        gap: 20px;
+       flex-direction: row;
+    }
+    .developer_flex{
+        flex-direction: row;
+        gap: 20px;
+    }
+    
 }
